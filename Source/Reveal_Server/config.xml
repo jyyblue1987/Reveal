@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	<mysql>
+		<host>localhost</host>
+		<user>root</user>
+		<password></password>
+		<database>ennovatech_client2</database>
+	</mysql>
+	<timezone>Asia/Hong_Kong</timezone>
+</config>
