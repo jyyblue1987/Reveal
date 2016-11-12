@@ -69,6 +69,7 @@ app.post('/routes/getmatch',getmatch.getmatch);
 app.post('/routes/personinfo', personinfo.personinfo);
 
 app.get('/routes/myprofile', myprofile.myprofile);
+app.post('/routes/myprofile', myprofile.myprofile_post);
 
 //app.get('/personinfo', personinfo.personinfo);
 //app.get('/getmatch',getmatch.getmatch);
