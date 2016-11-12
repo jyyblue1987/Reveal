@@ -8,7 +8,26 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var restapi = require('./routes/restapi');
-
+///////////////////// my code  ////////////////////////
+//////////////////////////////////////////////////////
+var login   = require('./routes/login');
+var rated   = require('./routes/rated');
+var newfeed = require('./routes/newfeed');
+var commentlike = require('./routes/commentlike');
+var profile = require('./routes/profile');
+var friendprofile = require('./routes/friendprofile');
+var matchprofile = require('./routes/matchprofile');
+var addfriend = require('./routes/addfriend');
+var chat = require('./routes/chat');
+var downloadphoto = require('./routes/downloadphoto');
+var uploadphoto = require('./routes/uploadphoto');
+var photoinfo = require('./routes/photoinfo');
+var getfriend = require('./routes/getfriend');
+var getmatch  = require('./routes/getmatch');
+var personinfo = require('./routes/personinfo');
+var myprofile= require('./routes/myprofile');
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 var app = express();
 
 // view engine setup
@@ -23,11 +42,60 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+  req.headers['if-none-match'] = 'no-match-for-this';
+  next();
+});
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', restapi);
 
+//////////////////////// my code /////////////////////////////
+/////////////////////////////////////////////////////
+app.post('/routes/login',login.login)
+app.post('/routes/rated', rated.rated);
+app.post('/routes/photoinfo', photoinfo.photoinfo);
+//app.post('/routes/newfeed', newfeed.newfeed);
+app.post('/routes/commentlike', commentlike.commentlike);
+app.post('/routes/profile', profile.profile);
+//app.post('/routes/myprofile', myprofile.myprofile);
+app.post('/routes/friendprofile', friendprofile.friendprofile);
+app.post('/routes/matchprofile', matchprofile.matchprofile);
+//app.post('/routes/addfriend', addfriend.addfriend);
+//app.post('/routes/chat', chat.chat);
+app.post('/routes/getfriend', getfriend.getfriend);
+app.post('/routes/getmatch',getmatch.getmatch);
+app.post('/routes/personinfo', personinfo.personinfo);
+
+app.get('/routes/myprofile', myprofile.myprofile);
+
+//app.get('/personinfo', personinfo.personinfo);
+//app.get('/getmatch',getmatch.getmatch);
+//app.get('/getfriend',getfriend.getfriend);
+//app.get('/login',login.login);
+//app.get('/rated', rated.rated);
+app.get('/newfeed', newfeed.newfeed);
+//app.get('/commentlike', commentlike.commentlike);
+//app.get('/profile', profile.profile);
+//app.get('/friendprofile', friendprofile.friendprofile);
+//app.get('/matchprofile', matchprofile.matchprofile);
+app.get('/addfriend', addfriend.addfriend);
+app.get('/chat', chat.chat);
+
+
+app.post('routes/downloadphoto',downloadphoto.downloadphoto);
+//app.post('/routes/uploadphoto',uploadphoto.uploadphoto);
+
+var multer = require('multer');
+var fs = require('fs');
+var path = require('path');
+var appRoot = path.resolve(__dirname);
+app.post('/routes/uploadphoto', multer({ dest: appRoot + '/public/images/'}).single('uploadphoto'), uploadphoto.uploadphoto);
+
 // catch 404 and forward to error handler
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
