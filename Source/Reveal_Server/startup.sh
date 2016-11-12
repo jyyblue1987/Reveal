@@ -1,0 +1,1 @@
+forever start bin/www -w -o ./out.log -e ./err.log
