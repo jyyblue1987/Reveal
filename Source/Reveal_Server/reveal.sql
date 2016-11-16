@@ -50,7 +50,7 @@ CREATE TABLE `friend` (
   `facebookid1` varchar(255) DEFAULT NULL,
   `facebookid2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table friend
@@ -66,7 +66,7 @@ INSERT INTO `friend` VALUES (5,'5','1');
 INSERT INTO `friend` VALUES (6,'1','3');
 INSERT INTO `friend` VALUES (7,'3','1');
 INSERT INTO `friend` VALUES (8,'333379007041276','1');
-INSERT INTO `friend` VALUES (10,'44','333379007041276');
+INSERT INTO `friend` VALUES (13,'2','333379007041276');
 /*!40000 ALTER TABLE `friend` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +80,7 @@ CREATE TABLE `matching` (
   `facebookid1` varchar(255) DEFAULT NULL,
   `facebookid2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table matching
@@ -91,21 +91,7 @@ LOCK TABLES `matching` WRITE;
 INSERT INTO `matching` VALUES (1,'1','2');
 INSERT INTO `matching` VALUES (2,'1','3');
 INSERT INTO `matching` VALUES (3,'2','3');
-INSERT INTO `matching` VALUES (4,'4','1');
-INSERT INTO `matching` VALUES (5,'4','1');
-INSERT INTO `matching` VALUES (6,'4','1');
-INSERT INTO `matching` VALUES (7,'4','1');
-INSERT INTO `matching` VALUES (8,'4','1');
-INSERT INTO `matching` VALUES (9,'4','1');
-INSERT INTO `matching` VALUES (10,'4','1');
-INSERT INTO `matching` VALUES (11,'4','1');
-INSERT INTO `matching` VALUES (12,'4','1');
-INSERT INTO `matching` VALUES (13,'4','1');
-INSERT INTO `matching` VALUES (14,'4','1');
-INSERT INTO `matching` VALUES (15,'4','1');
-INSERT INTO `matching` VALUES (16,'4','1');
-INSERT INTO `matching` VALUES (17,'2','333379007041276');
-INSERT INTO `matching` VALUES (18,'333379007041276','3');
+INSERT INTO `matching` VALUES (19,'333379007041276','23');
 /*!40000 ALTER TABLE `matching` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +108,7 @@ CREATE TABLE `notification` (
   `sendtime` bigint(20) DEFAULT NULL,
   `feedval` text,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table notification
@@ -131,88 +117,22 @@ CREATE TABLE `notification` (
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
 INSERT INTO `notification` VALUES (1,'a','g','matchRequest',0,NULL);
-INSERT INTO `notification` VALUES (7,'1','2','newfeed',11,'pp1');
-INSERT INTO `notification` VALUES (8,'1','2','newfeed',11,'pp1');
-INSERT INTO `notification` VALUES (9,'1','2','newfeed',11,'pp1');
-INSERT INTO `notification` VALUES (10,'1','2','newfeed',11,'pp1');
-INSERT INTO `notification` VALUES (11,'1','2','newfeed',11,'pp1');
-INSERT INTO `notification` VALUES (13,'1','2','newfeed',11,'pp1');
-INSERT INTO `notification` VALUES (15,'3','1','requestfriend',10,NULL);
-INSERT INTO `notification` VALUES (16,'3','1','requestfriend',10,NULL);
+INSERT INTO `notification` VALUES (13,'1','2','newfeed',11,'312613898fcf7cc9bda2bb47988b9a41.jpg');
 INSERT INTO `notification` VALUES (17,'3','1','requestfriend',10,NULL);
 INSERT INTO `notification` VALUES (18,'3','1','requestfriend',10,NULL);
 INSERT INTO `notification` VALUES (19,'3','1','requestfriend',10,NULL);
 INSERT INTO `notification` VALUES (20,'333379007041276','2','matchRequest',10,NULL);
 INSERT INTO `notification` VALUES (21,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (24,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (25,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (26,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (27,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (28,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (29,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (30,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (31,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (32,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (33,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (34,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (35,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (36,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (37,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (38,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (39,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (40,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (41,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (42,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (43,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (44,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (45,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (46,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (47,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (48,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (49,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (50,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (51,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (52,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (53,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (54,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (55,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (56,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (57,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (58,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (59,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (60,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (61,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (62,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (63,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (64,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (65,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (66,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (67,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (68,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (69,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (70,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (71,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (72,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (73,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (74,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (75,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (76,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (77,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (78,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (79,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (80,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (81,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (82,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (83,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (84,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (85,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (86,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (93,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (95,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (98,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (99,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (103,'333379007041276','2','matchRequest',10,NULL);
-INSERT INTO `notification` VALUES (113,'333379007041276','333379007041276','matchRequest',10,NULL);
+INSERT INTO `notification` VALUES (227,'333379007041276','3','acceptfriend',0,NULL);
+INSERT INTO `notification` VALUES (228,'333379007041276','2','requestfriend',10,NULL);
+INSERT INTO `notification` VALUES (231,'333379007041276','2','acceptfriend',0,NULL);
+INSERT INTO `notification` VALUES (233,'333379007041276','2','acceptfriend',0,NULL);
+INSERT INTO `notification` VALUES (234,'333379007041276','23','requestfriend',10,NULL);
+INSERT INTO `notification` VALUES (235,'333379007041276','44','matchRequest',10,NULL);
+INSERT INTO `notification` VALUES (236,'333379007041276','44','matchRequest',10,NULL);
+INSERT INTO `notification` VALUES (237,'333379007041276','44','matchRequest',10,NULL);
+INSERT INTO `notification` VALUES (238,'333379007041276','1','newfeed',11,'photo7.jpg');
+INSERT INTO `notification` VALUES (239,'333379007041276','2','newfeed',0,'photo7.jpg');
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,8 +158,9 @@ CREATE TABLE `photo` (
   `likefacebookid` text,
   `mycomment` text,
   `name` varchar(255) DEFAULT NULL,
+  `rate` int(11) DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table photo
@@ -247,34 +168,54 @@ CREATE TABLE `photo` (
 
 LOCK TABLES `photo` WRITE;
 /*!40000 ALTER TABLE `photo` DISABLE KEYS */;
-INSERT INTO `photo` VALUES (3,'2','338a9416367237a9c0568778d83e1831.jpg',35,15,0,0,0,0,0,2,'www&8^ddd&3',NULL,NULL,NULL,'a');
-INSERT INTO `photo` VALUES (5,'1','312613898fcf7cc9bda2bb47988b9a41.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (6,'1','42a9824b9e31999c385479d6a65d985c.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (7,'1','312613898fcf7cc9bda2bb47988b9a41.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (8,'1','42a9824b9e31999c385479d6a65d985c.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (9,'44','312613898fcf7cc9bda2bb47988b9a41.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (10,'44','42a9824b9e31999c385479d6a65d985c.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (11,'44','312613898fcf7cc9bda2bb47988b9a41.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (12,'44','42a9824b9e31999c385479d6a65d985c.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (13,'44','312613898fcf7cc9bda2bb47988b9a41.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (14,'44','42a9824b9e31999c385479d6a65d985c.jpg',152,19,1,0,0,0,0,7,'ttt&1^ass&2^fhhk&1^hjjg&1^ggg&1^tying&1^Tgj.l.uvih&1',7,'4^4^333379007041276^333379007041276^333379007041276^333379007041276^333379007041276','this is great','a');
-INSERT INTO `photo` VALUES (15,'333379007041276','0d268937709f3e6e2b79066313e72b6c.jpg',0,9,0,0,0,1,0,0,'',0,'','','\"\"');
-INSERT INTO `photo` VALUES (16,'333379007041276','312613898fcf7cc9bda2bb47988b9a41.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"');
-INSERT INTO `photo` VALUES (17,'333379007041276','42a9824b9e31999c385479d6a65d985c.jpg',7,2,0,0,0,0,0,0,'',0,'','','\"\"');
-INSERT INTO `photo` VALUES (18,'333379007041276','312613898fcf7cc9bda2bb47988b9a41.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"');
-INSERT INTO `photo` VALUES (19,'333379007041276','338a9416367237a9c0568778d83e1831.jpg',0,1,0,0,0,0,0,0,'',0,'','','\"\"');
-INSERT INTO `photo` VALUES (20,'333379007041276','0835c12d5d134e73930ebe0e80244a21.jpg',0,1,0,0,0,0,0,0,'',0,'','','\"\"');
-INSERT INTO `photo` VALUES (21,'333379007041276','312613898fcf7cc9bda2bb47988b9a41.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"');
-INSERT INTO `photo` VALUES (22,'2','0d268937709f3e6e2b79066313e72b6c.jpg',146,54,1,0,2,0,0,2,'asd&1^ddd&3',NULL,NULL,NULL,'a');
-INSERT INTO `photo` VALUES (23,'2','42a9824b9e31999c385479d6a65d985c.jpg',146,55,1,0,2,0,0,2,'asd&1^ddd&3',NULL,NULL,NULL,'a');
-INSERT INTO `photo` VALUES (24,'3','338a9416367237a9c0568778d83e1831.jpg',35,14,1,0,2,0,0,2,'asd&1^ddd&3',NULL,NULL,NULL,'a');
-INSERT INTO `photo` VALUES (25,'3','0835c12d5d134e73930ebe0e80244a21.jpg',146,54,1,0,2,0,0,2,'asd&1^ddd&3',NULL,NULL,NULL,'a');
-INSERT INTO `photo` VALUES (26,'3','312613898fcf7cc9bda2bb47988b9a41.jpg',146,54,1,0,2,0,0,2,'asd&1^ddd&3',NULL,NULL,NULL,'a');
-INSERT INTO `photo` VALUES (27,'333379007041276','0f3e3b17457e57b4fd5bf25479d020df.jpg',6,3,0,0,0,0,0,0,'',0,'','','');
-INSERT INTO `photo` VALUES (28,'333379007041276','686d2cb43a9e2e3f5f6f999efa57737f.jpg',0,0,0,0,0,0,0,0,'',0,'','','');
-INSERT INTO `photo` VALUES (29,'333379007041276','360ab50ff6218fc82de5704145df36c7.jpg',0,0,0,0,0,0,0,0,'',0,'','','');
-INSERT INTO `photo` VALUES (30,'333379007041276','20da79a5bb8be3252d09a297e2fe2b5a.jpg',0,1,0,0,0,0,0,0,'',0,'','','');
-INSERT INTO `photo` VALUES (31,'333379007041276','59e49b8d5c62a12b13a0484cbb9eff4c.jpg',0,0,0,0,0,0,0,0,'',0,'','','');
+INSERT INTO `photo` VALUES (37,'1','face1.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (38,'1','face2.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (39,'1','face3.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (40,'1','photo1.jpg',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (41,'1','photo2.jpg',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (42,'1','photo3.jpg',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (43,'1','photo4.jpg',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (44,'1','photo5.jpg',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (45,'1','photo6.jpg',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (46,'1','face1.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (47,'1','face1.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (48,'1','face1.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (49,'1','face1.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (50,'1','face1.png',0,0,0,0,0,0,0,0,'0',0,'0','0','Pyon',0);
+INSERT INTO `photo` VALUES (51,'333379007041276','photo8.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"',0);
+INSERT INTO `photo` VALUES (52,'333379007041276','photo7.jpg',0,5,0,0,0,0,0,0,'',0,'','Please write about your photo.','\"\"',0);
+INSERT INTO `photo` VALUES (53,'333379007041276','photo4.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"',0);
+INSERT INTO `photo` VALUES (54,'333379007041276','photo3.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"',0);
+INSERT INTO `photo` VALUES (55,'333379007041276','photo2.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"',0);
+INSERT INTO `photo` VALUES (56,'333379007041276','photo1.jpg',0,5,0,0,0,0,0,0,'',0,'','','\"\"',0);
+INSERT INTO `photo` VALUES (64,'333379007041276','928d7643ad91172561301d90a4099726.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (65,'333379007041276','824ca7ff46d021cb760cee2b3d258660.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (66,'333379007041276','d8def41050ed6f31e4d63dcf452bde4b.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (67,'333379007041276','1ae71dbca174fd7328835054125b7c58.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (68,'333379007041276','4d6dbc85d0e2c0d2b02319abf881be17.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (69,'333379007041276','912c574f4c38d34da2dedd0e7630fb57.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (70,'333379007041276','e556deb378315a9e554c967b73e189a1.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (71,'333379007041276','c62379fae093d8b93828c42d525b14d6.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (72,'333379007041276','2d4ffbb32e0649aaa451cbeb777fee40.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (73,'333379007041276','3635d3cbbd163590c57b6df8e52962aa.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (74,'333379007041276','f492dc4d71939f29aaa65d0d1403d73f.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (75,'333379007041276','db061b5e9044e925784130f642e4ba77.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (76,'333379007041276','bc06e7201c1db3607fa3cdb37d639cb1.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (77,'333379007041276','09463ddea3890ddacfe5f1df433a45b1.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (78,'333379007041276','eb69bca10c827ebe5d6b5a2503f73dcb.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (79,'333379007041276','2a12e6b74a569622ee7227728cf27524.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (80,'333379007041276','3e9abce8c1d68160cd0c83cf02f142dd.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (81,'333379007041276','9a69a4d09d35b2ad75b4103745380ef1.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (82,'333379007041276','8a38046433ce2a2050057f2c1176d71b.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (83,'333379007041276','5ddaef52b3a379b3e26bf1e36e66d734.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (84,'333379007041276','f29158d25fad5385a7b5c40c9f6041e2.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (85,'333379007041276','f95f544f99a1f912b07abb203bc84177.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (86,'333379007041276','45c17544527d62d9280d0e3ce1b3057e.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (87,'333379007041276','ac1f0669a293b9f06a457a9445ea4ef1.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (88,'333379007041276','f84921a79ae896a7305381fba6ce62d5.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (89,'333379007041276','c289224683f9050ffb704c9ddbfa76e0.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (90,'333379007041276','1245c603478c975fffaacfb1c9b56285.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
+INSERT INTO `photo` VALUES (91,'333379007041276','e9d4b259eba4820f1779e1ffb95a766f.jpg',0,0,0,0,0,0,0,0,'',0,'','','',0);
 /*!40000 ALTER TABLE `photo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,7 +237,7 @@ CREATE TABLE `users` (
   `locationx` float DEFAULT NULL,
   `locationy` float DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table users
@@ -306,9 +247,10 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'1','a','aa','man',18,'10','pp','aemail',0,0);
 INSERT INTO `users` VALUES (2,'2','b','bb','man',19,'5','bpp','aemail',1,1);
-INSERT INTO `users` VALUES (6,'23','f',NULL,NULL,19,NULL,NULL,'aemail',NULL,NULL);
-INSERT INTO `users` VALUES (7,'333379007041276','YakYong Jong',NULL,'male',10,'0',NULL,'jyyblue1987@outlook.com',0,0);
+INSERT INTO `users` VALUES (6,'23','f',NULL,NULL,19,NULL,NULL,'aemail',0,0);
+INSERT INTO `users` VALUES (7,'333379007041276','YakYong Jong',NULL,'male',18,'0',NULL,'jyyblue1987@outlook.com',0,0);
 INSERT INTO `users` VALUES (8,'44',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (9,'3','d','dd','man',52,'0','000','fnbvgh',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
