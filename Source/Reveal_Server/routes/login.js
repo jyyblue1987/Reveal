@@ -4,8 +4,9 @@
 url = require('url');
 exports.login = function(req, res){
     console.log(req);
-
-    // post
+    // if the man come this app newly then register that man.
+    // if the man is customer then return non friend, non match, non herself person list.
+    // then return non match and non friend person's photo list.
 
     var facebookid=req.body.facebookid;
     var email = req.body.email;
@@ -80,7 +81,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
             }
         }
         queryComplete = queryComplete+1;
@@ -92,7 +93,7 @@ sendphoto = function(facebookid,res){
             match1 = match1 + "'" + rows[rows.length-1].facebookid2 + "' "
         }
         if(queryComplete == 4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
         }
 
     });
@@ -101,7 +102,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
             }
         }
         queryComplete = queryComplete+1;
@@ -114,7 +115,7 @@ sendphoto = function(facebookid,res){
 
         }
         if(queryComplete==4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
         }
 
     });
@@ -123,7 +124,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
             }
         }
         queryComplete = queryComplete+1;
@@ -135,7 +136,7 @@ sendphoto = function(facebookid,res){
             friend1 = friend1 + "'" + rows2[rows2.length-1].facebookid2 + "' "
         }
         if(queryComplete == 4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
         }
 
     });
@@ -144,7 +145,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
             }
         }
         queryComplete = queryComplete+1;
@@ -156,14 +157,14 @@ sendphoto = function(facebookid,res){
             friend2 = friend2 + "'" + rows3[rows3.length-1].facebookid1 + "' "
         }
         if(queryComplete == 4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
         }
 
     });
 
 }
 
-getNonFriendMatch = function(match1, match2, friend1, friend2,res) {
+getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid) {
     var MatchAndFriend = match1;
     var MatchAndFriend2 = match2;
     var MatchAndFriend3 = friend1;
@@ -187,6 +188,8 @@ getNonFriendMatch = function(match1, match2, friend1, friend2,res) {
     }else if(finalMatchF !="" && MatchAndFriend4 != ""){
         finalMatchF = finalMatchF + ", " + MatchAndFriend4;
     };
+
+    finalMatchF = finalMatchF + ", '"+ facebookid + "'";
     var query = "SELECT facebookid FROM users WHERE facebookid NOT IN(" + finalMatchF +")";
     global.mysql.query(query, function(err, rows){
         if(err){

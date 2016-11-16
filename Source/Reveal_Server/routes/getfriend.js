@@ -4,6 +4,8 @@
 /**
  * Created by JonIC on 2016-11-11.
  */
+
+ // get ones all friend from friend table.
 url = require('url');
 exports.getfriend = function(req, res){
     console.log(req);

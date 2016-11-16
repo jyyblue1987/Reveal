@@ -4,12 +4,18 @@
 url = require('url');
 exports.newfeed = function(req, res){
     console.log(req);
-    var url_parts = url.parse(req.url,true);
-    var facebookid = url_parts.query.facebookid;
-    var photopath = url_parts.query.photopath;
-    var group = url_parts.query.group;
-    var aboutphoto = url_parts.query.aboutphoto;
-    var rate = url_parts.query.rate;
+    //var url_parts        = url.parse(req.url,true);
+    //var facebookid       = url_parts.query.facebookid;
+    //var photopath        = url_parts.query.photopath;
+    //var group            = url_parts.query.group;
+    //var aboutphoto       = url_parts.query.aboutphoto;
+    //var rate             = url_parts.query.rate;
+    //var url_parts        = url.parse(req.url,true);
+    var facebookid       = req.body.facebookid;
+    var photopath        = req.body.photopath;
+    var group            = req.body.group;
+    var aboutphoto       = req.body.aboutphoto;
+    var rate             = req.body.rate;
 
     // first update the photo database
     var upphotoquery = "UPDATE photo SET mycomment='"+ aboutphoto
@@ -73,6 +79,7 @@ exports.newfeed = function(req, res){
                     // here add the newfeed notification message.
                     var sendtime = 11;
                     friend2 = rows3[x].facebookid1;
+                    var sendtime = new Date().toString();
                     var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval) VALUES ('" +
                         facebookid + "', '"+ friend2 +"', 'newfeed', '" + sendtime +"', '" + photopath +"')";
                     global.mysql.query(newfeedquery, function(err, newresult){
@@ -101,6 +108,7 @@ exports.newfeed = function(req, res){
 
             }
             if(result.length > 0){
+                var sendtime = new Date().toString();
                 var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" +
                     facebookid + "', '"+ group +"', 'newfeed', '" + sendtime +"', '" + photopath +"')";
                 global.mysql.query(newfeedquery, function(err, newresult){
@@ -118,6 +126,7 @@ exports.newfeed = function(req, res){
 
             }
             if(result.length > 0) {
+                var sendtime = new Date().toString();
                 var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" +
                     facebookid + "', '" + group + "', 'newfeed', '" + sendtime + "', '" + photopath + "')";
                 global.mysql.query(newfeedquery, function (err, newresult) {

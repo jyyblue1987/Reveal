@@ -1,6 +1,8 @@
 /**
  * Created by JonIC on 2016-11-10.
  */
+
+    // get matches profile (facebookid, photopath, ratesum, ratenumber, commentnum, likenum, )
 url = require('url');
 exports.matchprofile = function(req, res) {
 

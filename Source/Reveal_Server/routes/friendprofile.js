@@ -1,6 +1,7 @@
 /**
  * Created by JonIC on 2016-11-10.
  */
+// get friend profile ( photos data ) given facebook id.
 url = require('url');
 exports.friendprofile = function(req, res) {
     console.log(req);

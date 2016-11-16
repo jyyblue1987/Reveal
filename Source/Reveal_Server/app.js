@@ -56,13 +56,13 @@ app.use('/api', restapi);
 app.post('/routes/login',login.login)
 app.post('/routes/rated', rated.rated);
 app.post('/routes/photoinfo', photoinfo.photoinfo);
-//app.post('/routes/newfeed', newfeed.newfeed);
+app.post('/routes/newfeed', newfeed.newfeed);
 app.post('/routes/commentlike', commentlike.commentlike);
 app.post('/routes/profile', profile.profile);
 //app.post('/routes/myprofile', myprofile.myprofile);
 app.post('/routes/friendprofile', friendprofile.friendprofile);
 app.post('/routes/matchprofile', matchprofile.matchprofile);
-//app.post('/routes/addfriend', addfriend.addfriend);
+app.post('/routes/addfriend', addfriend.addfriend);
 //app.post('/routes/chat', chat.chat);
 app.post('/routes/getfriend', getfriend.getfriend);
 app.post('/routes/getmatch',getmatch.getmatch);
@@ -76,12 +76,12 @@ app.post('/routes/myprofile', myprofile.myprofile_post);
 //app.get('/getfriend',getfriend.getfriend);
 //app.get('/login',login.login);
 //app.get('/rated', rated.rated);
-app.get('/newfeed', newfeed.newfeed);
+//app.get('/newfeed', newfeed.newfeed);
 //app.get('/commentlike', commentlike.commentlike);
 //app.get('/profile', profile.profile);
 //app.get('/friendprofile', friendprofile.friendprofile);
 //app.get('/matchprofile', matchprofile.matchprofile);
-app.get('/addfriend', addfriend.addfriend);
+//app.get('/addfriend', addfriend.addfriend);
 app.get('/chat', chat.chat);
 
 

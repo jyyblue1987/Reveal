@@ -47,7 +47,7 @@ exports.myprofile_post = function(req, res){
     //post
     var facebookid = req.body.facebookid;
 
-    // if they are not match and friends.
+    // if get user's registerd information in user table.
 
     var photoquery = "SELECT * FROM photo WHERE facebookid='" + facebookid + "'";
     global.mysql.query(photoquery, function (err, result) {

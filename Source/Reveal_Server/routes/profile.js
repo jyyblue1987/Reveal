@@ -2,7 +2,7 @@
  * Created by JonIC on 2016-11-10.
  */
 url = require('url');
-
+// get the photo's with facebookid.
 exports.profile = function(req, res){
     console.log(req);
     //var url_parts = url.parse(req.url, true);

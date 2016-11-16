@@ -17,8 +17,10 @@ exports.commentlike = function(req, res) {
     var photopath       = req.body.photopath;
     var like            = req.body.like;
     var comment         = req.body.comment;
+    var username        = req.body.sendname;
 
     // if sender like the photo then upgrade like with the sender's facebookid
+    // in photo table.
     if(like == "like"){
         // first find the photo that liked AND  update the values.
         var photoquery = "SELECT * FROM photo WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
@@ -57,7 +59,7 @@ exports.commentlike = function(req, res) {
             }
         });
     }else{
-
+        // for the comment data rewrite in photo table comment content and comment size.
         // first find the photo that liked AND  update the values.
         var photoquery = "SELECT * FROM photo WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
         global.mysql.query(photoquery, function(err, photoresult){
@@ -74,9 +76,9 @@ exports.commentlike = function(req, res) {
                 }
                 var commentcon = photoresult[0].commentcon;
                 if(commentcon == null || commentcon == ""){
-                    commentcon = comment;
+                    commentcon =name + "&" +  comment + "&" + sendfacebookid;
                 }else {
-                    commentcon = commentcon + "^" + comment;
+                    commentcon = commentcon + "^" + name + "&" +  comment + "&" + sendfacebookid;
                 }
                 // update the photo column.(table)
                 var commentquery = "UPDATE photo SET commentnum='"+ commentnum +"', commentcon='"+ commentcon

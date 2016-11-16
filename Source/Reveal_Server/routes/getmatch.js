@@ -1,6 +1,7 @@
 /**
  * Created by JonIC on 2016-11-11.
  */
+ // get one's all matches from match table.
 url = require('url');
 exports.getmatch = function(req, res){
     console.log(req);
