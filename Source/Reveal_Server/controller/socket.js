@@ -86,7 +86,7 @@ saveChatHistory=function(sender, message, receiver){
 }
 
 sendNotification = function(facebookid){
-    var notequery = "SELECT * FROM notification WHERE destination='"+facebookid+"'";
+    var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "' AND state='0'";
     global.mysql.query(notequery, function(err, result){
         var data = {};
         data.retcode = 200;
@@ -96,10 +96,10 @@ sendNotification = function(facebookid){
         global.io.sockets.in(facebookid).emit("notification", data);
         console.log("Sending data: ",data);
         // here delete that notifications.
-        var delquery = "DELETE  FROM notification WHERE destination='"+facebookid+"'";
-        global.mysql.query(delquery, function(err, delresult){
-
-        });
+        //var delquery = "DELETE  FROM notification WHERE destination='"+facebookid+"'";
+        //global.mysql.query(delquery, function(err, delresult){
+        //
+        //});
     });
 }
 //global.io.sockets.in(room).emit(data.content.type, data);

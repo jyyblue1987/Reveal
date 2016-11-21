@@ -27,6 +27,7 @@ var getmatch  = require('./routes/getmatch');
 var personinfo = require('./routes/personinfo');
 var myprofile= require('./routes/myprofile');
 var deletefriend = require('./routes/deletefriend');
+var readnotification = require('./routes/readnotification')
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 var app = express();
@@ -72,6 +73,7 @@ app.post('/routes/personinfo', personinfo.personinfo);
 app.get('/routes/myprofile', myprofile.myprofile);
 app.post('/routes/myprofile', myprofile.myprofile_post);
 app.post('/routes/deletefriend',deletefriend.deletefriend);
+app.post('/routes/readnotification', readnotification.readnotification);
 
 
 //app.get('/routes/deletefriend',deletefriend.deletefriend);
