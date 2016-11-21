@@ -11,7 +11,7 @@ exports.matchprofile = function(req, res) {
     //var facebookid = url_parts.query.facebookid;
     //var sendfacebookid = url_parts.query.sendfacebookid;
 
-    var facebookid = rep.body.facebookid;
+    var facebookid = req.body.facebookid;
     var sendfacebookid = req.body.sendfacebookid;
 
     var isMatch = "";
@@ -38,6 +38,7 @@ exports.matchprofile = function(req, res) {
                 if (err) {
                     var data = {};
                     data.retcode = 300;
+                    data.content = "";
                     data.error_msg = "Error sql server";
                     return res.send(200,data);
                     //res.send(200, "database error");
@@ -58,6 +59,7 @@ exports.matchprofile = function(req, res) {
                     console.error(err);
                     var data = {};
                     data.retcode = 300;
+                    data.content="";
                     data.error_msg = "Error sql server";
                     return res.send(200,data);
                     // here finish if there is an database error.
@@ -70,6 +72,7 @@ exports.matchprofile = function(req, res) {
                         if (err) {
                             var data = {};
                             data.retcode = 300;
+                            data.content = "";
                             data.error_msg = "Error sql server";
                             return res.send(200,data);
                             //res.send(200, "database error");
@@ -87,6 +90,7 @@ exports.matchprofile = function(req, res) {
 
                     var data = {};
                     data.retcode = 400;
+                    data.content = "";
                     data.error_msg = "No such man";
                     return res.send(200,data);
 

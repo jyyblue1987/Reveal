@@ -26,6 +26,8 @@ exports.newfeed = function(req, res){
         }
         console.log(upphotoquery);
     });
+
+
     // find the users who take part in the specified group
     if(group == "facebook"){
         var query_friend_1 = "SELECT facebookid2 FROM friend WHERE facebookid1='"+facebookid+"'";

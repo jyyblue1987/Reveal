@@ -52,8 +52,9 @@ insert = function(facebookid, gender, locationx, locationy, email, age, name){
     var totalrate =0;
     //var locationx  = 0;
     //var locationy = 0;
-    var query = "INSERT INTO users (facebookid, gender, locationx, locationy, totalrate, firstname, age, email) VALUES ('"+facebookid+"', '"+ gender
-        +"', '"+locationx+"', '"+locationy +"', '"+ totalrate+"', '"+name+"', '"+age+ "', '"+email+"')" ;
+    var profilephoto = "";
+    var query = "INSERT INTO users (facebookid, gender, locationx, locationy, totalrate, firstname, age, email,profilephoto) VALUES ('"+facebookid+"', '"+ gender
+        +"', '"+locationx+"', '"+locationy +"', '"+ totalrate+"', '"+name+"', '"+age+ "', '"+email+"', '"+ profilephoto +"')" ;
     global.mysql.query(query,function(err,rows){
         if(err){
             console.error(err);

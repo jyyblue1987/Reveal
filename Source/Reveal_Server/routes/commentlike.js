@@ -1,7 +1,7 @@
 /**
  * Created by JonIC on 2016-11-09.
  */
-
+// like construction:          facebookid & username   ^    facebookid & username
 url = require('url');
 exports.commentlike = function(req, res) {
     console.log(req);
@@ -17,7 +17,7 @@ exports.commentlike = function(req, res) {
     var photopath       = req.body.photopath;
     var like            = req.body.like;
     var comment         = req.body.comment;
-    var username        = req.body.sendname;
+    var sendname        = req.body.sendname;
 
     // if sender like the photo then upgrade like with the sender's facebookid
     // in photo table.
@@ -38,9 +38,22 @@ exports.commentlike = function(req, res) {
                 }
                 var likefacebookid = photoresult[0].likefacebookid;
                 if(likefacebookid == null || likefacebookid == ""){
-                    likefacebookid = sendfacebookid;
+                    likefacebookid = sendfacebookid + "&" + sendname;
                 }else {
-                    likefacebookid = likefacebookid + "^" + sendfacebookid;
+
+                    // if the sendfacebookid has already like this photo then alarm show.
+                    if(likefacebookid.indexOf(sendfacebookid) > -1) {
+                        // return error.
+                        var data = {};
+                        data.retcode = 201;
+                        data.error_msg = "You already like this photo.";
+                        //res.json(data);
+                        return res.send(200,data);
+
+
+                    }else{ // if sendfacebookid does not like this photo before then append this like message.
+                        likefacebookid = likefacebookid + "^" + sendfacebookid +"&" + sendname;
+                    }
                 }
                 // update the photo column.(table)
                 var likequery = "UPDATE photo SET likenum='"+ likenum +"', likefacebookid='"+ likefacebookid
@@ -76,10 +89,13 @@ exports.commentlike = function(req, res) {
                 }
                 var commentcon = photoresult[0].commentcon;
                 if(commentcon == null || commentcon == ""){
-                    commentcon =name + "&" +  comment + "&" + sendfacebookid;
+                    commentcon =sendname + "&" +  comment + "&" + sendfacebookid;
                 }else {
-                    commentcon = commentcon + "^" + name + "&" +  comment + "&" + sendfacebookid;
+                    commentcon = commentcon + "^" + sendname + "&" +  comment + "&" + sendfacebookid;
                 }
+                // insert comment notification in notification table.
+//              INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('a', 'g', 'matchRequest', '0')
+
                 // update the photo column.(table)
                 var commentquery = "UPDATE photo SET commentnum='"+ commentnum +"', commentcon='"+ commentcon
                     +"' WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
@@ -87,15 +103,25 @@ exports.commentlike = function(req, res) {
                     if(err){
 
                     }
-                    console.log(commentquery);
-                    var data = {};
-                    data.retcode = 200;
-                    data.error_msg = "";
-                    //res.json(data);
-                    return res.send(200,data);
-                });
+                    var notequery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval) VALUES ('" + sendfacebookid + "', '" + facebookid + "', 'comment', '10', '"
+                        + photopath+ "')";
+                    global.mysql.query(notequery, function(err, result){
+                        if(err){
 
-            }
-        });
-    }
-}
+                        }
+                        console.log(commentquery);
+                        var data = {};
+                        data.retcode = 200;
+                        data.error_msg = "";
+                        //res.json(data);
+                        return res.send(200,data);
+
+
+                    }); // notificaton insert mysql.query
+
+                }); // update photo table query
+
+            } // if find photo that has such photopath
+        });  // find photo query
+    } // if this message is comment
+} // function

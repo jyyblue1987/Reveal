@@ -15,6 +15,7 @@ exports.personinfo = function(req, res){
         if(err){
             var data = {};
             data.retcode = 300;
+            data.content = "";
             data.error_msg = "sql server error";
             //res.json(data);
             return res.send(200,data);

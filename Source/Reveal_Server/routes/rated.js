@@ -63,7 +63,9 @@ exports.rated = function(req, res){
                 // update the photos' totalrate and ratenumber.
                 ratesum    = ratesum + rating;
                 rateNumber = rateNumber + 1;
-                var updatequery = "UPDATE photo SET ratesum='"+ ratesum +"', "+ "ratenumber='" + rateNumber
+                var rate = ratesum/rateNumber;
+
+                var updatequery = "UPDATE photo SET ratesum='"+ ratesum +"', "+ "ratenumber='" + rateNumber + "', rate='" + rate + "'"
                                             +"' WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
                 global.mysql.query(updatequery, function(err, udresult){
                     console.log(updatequery);

@@ -26,6 +26,7 @@ var getfriend = require('./routes/getfriend');
 var getmatch  = require('./routes/getmatch');
 var personinfo = require('./routes/personinfo');
 var myprofile= require('./routes/myprofile');
+var deletefriend = require('./routes/deletefriend');
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 var app = express();
@@ -70,7 +71,10 @@ app.post('/routes/personinfo', personinfo.personinfo);
 
 app.get('/routes/myprofile', myprofile.myprofile);
 app.post('/routes/myprofile', myprofile.myprofile_post);
+app.post('/routes/deletefriend',deletefriend.deletefriend);
 
+
+//app.get('/routes/deletefriend',deletefriend.deletefriend);
 //app.get('/personinfo', personinfo.personinfo);
 //app.get('/getmatch',getmatch.getmatch);
 //app.get('/getfriend',getfriend.getfriend);

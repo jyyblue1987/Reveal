@@ -41,6 +41,7 @@ exports.getfriend = function(req, res){
             if(result == null){
                 var data = {};
                 data.retcode = 201;
+                data.content = "999";
                 data.error_msg = "No Friend";
                 //res.json(data);
                 return res.send(200,data);
