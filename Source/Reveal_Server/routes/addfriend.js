@@ -56,7 +56,7 @@ exports.addfriend = function(req, res) {
                 if(err){
 
                 }
-                if(sameresult != null){
+                if(sameresult.length > 0){
                     // already exist
                     var data = {};
                     data.retcode=203
@@ -99,5 +99,52 @@ exports.addfriend = function(req, res) {
 
         });
 
+    }else if(request=="friendadd"){ // request to be friend with you. // add notification table.
+
+        var query = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" + sendfacebookid + "', '" + facebookid + "', 'friendadd', '10'";
+        global.mysql.query(query, function(err, result){
+            var data = {};
+            data.retcode=200;
+            data.error_msg = "";
+            data.content = "success";
+            res.send(200, data);
+        });
+    }else if(request == "friendaccept"){ // if someone accept the friend request
+        var queryadd = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" + sendfacebookid + "', '" + facebookid + "', 'friendaccept', '10'"; // add notification table as the receivers notification
+        global.mysql.query(queryadd, function(err, result){
+            if(err){
+                var data = {};
+                data.retcode=201;
+                data.error_msg = "";
+                data.content = "fail";
+                res.send(200, data);
+
+            }
+            var data = {};
+            data.retcode=200;
+            data.error_msg = "";
+            data.content = "success";
+            res.send(200, data);
+
+        });
+
+        // add friend table
+        var queryfriend = "INSERT INTO friend (facebookid1, facebookid2) VALUES ('" + sendfacebookid + "', '" + facebookid + "'";
+        global.mysql.query(queryfriend, function(err, result){
+            if(err){
+                var data = {};
+                data.retcode=201;
+                data.error_msg = "";
+                data.content = "fail";
+                res.send(200, data);
+
+            }
+            var data = {};
+            data.retcode=200;
+            data.error_msg = "";
+            data.content = "success";
+            res.send(200, data);
+
+        })
     }
 }

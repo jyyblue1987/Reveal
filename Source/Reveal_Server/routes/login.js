@@ -17,6 +17,7 @@ exports.login = function(req, res){
     var locationy=req.body.locationy;
     var othergender= req.body.othergender;
 
+    var first;
     console.log(facebookid);
     console.log(name);
 
@@ -38,13 +39,14 @@ exports.login = function(req, res){
             throw err;
         }
 
-
+        var first = 0;
         if(rows.length == 0){
             insert(facebookid, gender, locationx, locationy, email, age, name);
-            sendphoto(facebookid,res);
+            first = 1;
+            sendphoto(facebookid,res, first);
         }
         if(rows.length > 0){
-            sendphoto(facebookid,res);
+            sendphoto(facebookid,res, first);
         }
     });
 }
@@ -53,7 +55,7 @@ insert = function(facebookid, gender, locationx, locationy, email, age, name){
     //var locationx  = 0;
     //var locationy = 0;
     var profilephoto = "";
-    var query = "INSERT INTO users (facebookid, gender, locationx, locationy, totalrate, firstname, age, email,profilephoto) VALUES ('"+facebookid+"', '"+ gender
+    var query = "INSERT INTO users (facebookid, gender, locationx, locationy, totalrate, name, age, email,profilephoto) VALUES ('"+facebookid+"', '"+ gender
         +"', '"+locationx+"', '"+locationy +"', '"+ totalrate+"', '"+name+"', '"+age+ "', '"+email+"', '"+ profilephoto +"')" ;
     global.mysql.query(query,function(err,rows){
         if(err){
@@ -65,7 +67,7 @@ insert = function(facebookid, gender, locationx, locationy, email, age, name){
     });
 }
 
-sendphoto = function(facebookid,res){
+sendphoto = function(facebookid,res, first){
     var query_match_1 = "SELECT facebookid2 FROM matching WHERE facebookid1='"+facebookid+"'";
     var query_match_2 = "SELECT facebookid1 FROM matching WHERE facebookid2='"+facebookid+"'";
     var query_friend_1 = "SELECT facebookid2 FROM friend WHERE facebookid1='"+facebookid+"'";
@@ -82,7 +84,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid, first);
             }
         }
         queryComplete = queryComplete+1;
@@ -94,7 +96,7 @@ sendphoto = function(facebookid,res){
             match1 = match1 + "'" + rows[rows.length-1].facebookid2 + "' "
         }
         if(queryComplete == 4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid, first);
         }
 
     });
@@ -103,7 +105,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid, first);
             }
         }
         queryComplete = queryComplete+1;
@@ -116,7 +118,7 @@ sendphoto = function(facebookid,res){
 
         }
         if(queryComplete==4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid,first);
         }
 
     });
@@ -125,7 +127,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid, first);
             }
         }
         queryComplete = queryComplete+1;
@@ -137,7 +139,7 @@ sendphoto = function(facebookid,res){
             friend1 = friend1 + "'" + rows2[rows2.length-1].facebookid2 + "' "
         }
         if(queryComplete == 4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid,first);
         }
 
     });
@@ -146,7 +148,7 @@ sendphoto = function(facebookid,res){
             console.error(err);
             queryComplete = queryComplete+1;
             if(queryComplete == 4){
-                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+                getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid,first);
             }
         }
         queryComplete = queryComplete+1;
@@ -158,14 +160,14 @@ sendphoto = function(facebookid,res){
             friend2 = friend2 + "'" + rows3[rows3.length-1].facebookid1 + "' "
         }
         if(queryComplete == 4){
-            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid);
+            getNonFriendMatch(match1,match2,friend1,friend2,res,facebookid,first);
         }
 
     });
 
 }
 
-getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid) {
+getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid, first) {
     var MatchAndFriend = match1;
     var MatchAndFriend2 = match2;
     var MatchAndFriend3 = friend1;
@@ -191,7 +193,12 @@ getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid) {
     };
 
     finalMatchF = finalMatchF + ", '"+ facebookid + "'";
-    var query = "SELECT facebookid FROM users WHERE facebookid NOT IN(" + finalMatchF +")";
+    var query;
+    if(first == 1){
+        query = "SELECT facebookid FROM users WHERE facebookid NOT IN(" + finalMatchF +")";
+    }else{
+        query = "SELECT facebookid FROM users";
+    }
     global.mysql.query(query, function(err, rows){
         if(err){
             console.error(err);

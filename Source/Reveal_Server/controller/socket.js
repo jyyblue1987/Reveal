@@ -86,7 +86,7 @@ saveChatHistory=function(sender, message, receiver){
 }
 
 sendNotification = function(facebookid){
-    var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "' AND state='0'";
+    var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "'";
     global.mysql.query(notequery, function(err, result){
         var data = {};
         data.retcode = 200;

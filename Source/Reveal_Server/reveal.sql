@@ -30,7 +30,7 @@ CREATE TABLE `chat` (
   `message` text,
   `time` int(4) DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table chat
@@ -84,7 +84,7 @@ CREATE TABLE `friend` (
   `facebookid1` varchar(255) DEFAULT NULL,
   `facebookid2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table friend
@@ -95,7 +95,6 @@ LOCK TABLES `friend` WRITE;
 INSERT INTO `friend` VALUES (3,'2','6');
 INSERT INTO `friend` VALUES (6,'1','3');
 INSERT INTO `friend` VALUES (7,'3','1');
-INSERT INTO `friend` VALUES (20,'333379007041276','1');
 INSERT INTO `friend` VALUES (21,'3','333379007041276');
 INSERT INTO `friend` VALUES (22,'1111111','1');
 INSERT INTO `friend` VALUES (23,'3','111111111111');
@@ -112,7 +111,7 @@ CREATE TABLE `matching` (
   `facebookid1` varchar(255) DEFAULT NULL,
   `facebookid2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table matching
@@ -122,11 +121,9 @@ LOCK TABLES `matching` WRITE;
 /*!40000 ALTER TABLE `matching` DISABLE KEYS */;
 INSERT INTO `matching` VALUES (1,'1','2');
 INSERT INTO `matching` VALUES (2,'1','3');
-INSERT INTO `matching` VALUES (3,'2','3');
 INSERT INTO `matching` VALUES (27,'333379007041276','23');
-INSERT INTO `matching` VALUES (28,'333379007041276','5');
-INSERT INTO `matching` VALUES (29,'111111111','23');
-INSERT INTO `matching` VALUES (30,'11111111','5');
+INSERT INTO `matching` VALUES (29,'333379007041276','1');
+INSERT INTO `matching` VALUES (33,'333379007041276','5');
 /*!40000 ALTER TABLE `matching` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +141,7 @@ CREATE TABLE `notification` (
   `feedval` text,
   `state` int(11) DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=684 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=737 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table notification
@@ -165,9 +162,7 @@ INSERT INTO `notification` VALUES (595,'1','11','newfeed',10,'photo1.jpg',0);
 INSERT INTO `notification` VALUES (596,'1','11','message',10,'aaaa',0);
 INSERT INTO `notification` VALUES (597,'1','11','like',10,'photo3.jpg',0);
 INSERT INTO `notification` VALUES (606,'1','11','newfeed',11,'photo2.jpg',0);
-INSERT INTO `notification` VALUES (659,'333379007041276','44','matchRequest',10,NULL,0);
-INSERT INTO `notification` VALUES (660,'333379007041276','44','matchRequest',10,NULL,0);
-INSERT INTO `notification` VALUES (661,'333379007041276','44','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (661,'2','333379007041276','matchRequest',10,NULL,0);
 INSERT INTO `notification` VALUES (662,'333379007041276','44','matchRequest',10,NULL,0);
 INSERT INTO `notification` VALUES (663,'333379007041276','44','matchRequest',10,NULL,0);
 INSERT INTO `notification` VALUES (665,'333379007041276','3','comment',10,'photo1.jpg',0);
@@ -175,7 +170,6 @@ INSERT INTO `notification` VALUES (698,'5','333379007041276','requestfriend',0,'
 INSERT INTO `notification` VALUES (699,'1','333379007041276','acceptfriend',0,'photo2.jpg',0);
 INSERT INTO `notification` VALUES (700,'1','333379007041276','newmatch',0,'photo8.jpg',0);
 INSERT INTO `notification` VALUES (701,'1','333379007041276','comment',0,'photo4.jpg',0);
-INSERT INTO `notification` VALUES (703,'1','333379007041276','newfeed',10,'photo1.jpg',0);
 INSERT INTO `notification` VALUES (704,'1','333379007041276','message',10,'aaaa',0);
 INSERT INTO `notification` VALUES (705,'1','333379007041276','like',10,'photo3.jpg',0);
 INSERT INTO `notification` VALUES (706,'1','333379007041276','newfeed',11,'photo2.jpg',0);
@@ -191,8 +185,26 @@ INSERT INTO `notification` VALUES (724,'333379007041276','5','acceptfriend',0,NU
 INSERT INTO `notification` VALUES (726,'333379007041276','5','acceptfriend',0,NULL,0);
 INSERT INTO `notification` VALUES (728,'333379007041276','5','acceptfriend',0,NULL,0);
 INSERT INTO `notification` VALUES (730,'333379007041276','44','matchRequest',10,NULL,0);
-INSERT INTO `notification` VALUES (731,'2','333379007041276','matchRequest',0,'photo7.jpg',0);
 INSERT INTO `notification` VALUES (732,'5','11','requestfriend',0,'photo2.jpg',0);
+INSERT INTO `notification` VALUES (733,'1','333379007041276','newfeed',10,'photo4.jpg',0);
+INSERT INTO `notification` VALUES (734,'1','333379007041276','newfeed',10,'photo3.jpg',0);
+INSERT INTO `notification` VALUES (735,'1','333379007041276','newfeed',10,'photo2.jpg',0);
+INSERT INTO `notification` VALUES (736,'1','333379007041276','newfeed',10,'photo1.jpg',0);
+INSERT INTO `notification` VALUES (737,'333379007041276','44','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (738,'333379007041276','2','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (739,'333379007041276','44','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (740,'333379007041276','44','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (741,'333379007041276','44','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (742,'333379007041276','44','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (743,'333379007041276','2','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (744,'333379007041276','44','matchRequest',10,NULL,0);
+INSERT INTO `notification` VALUES (746,'5','333379007041276','acceptfriend',0,NULL,0);
+INSERT INTO `notification` VALUES (747,'333379007041276','5','acceptfriend',0,NULL,0);
+INSERT INTO `notification` VALUES (748,'333379007041276','5','requestfriend',10,NULL,0);
+INSERT INTO `notification` VALUES (749,'5','333379007041276','acceptfriend',0,NULL,0);
+INSERT INTO `notification` VALUES (750,'333379007041276','5','acceptfriend',0,NULL,0);
+INSERT INTO `notification` VALUES (751,'333379007041276','1','requestfriend',10,NULL,0);
+INSERT INTO `notification` VALUES (752,'333379007041276','5','requestfriend',10,NULL,0);
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +232,7 @@ CREATE TABLE `photo` (
   `name` varchar(255) DEFAULT '',
   `rate` int(11) DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table photo
@@ -232,8 +244,8 @@ INSERT INTO `photo` VALUES (40,'1','photo1.jpg',0,0,0,0,0,0,0,3,'YakYong Jong&wh
 INSERT INTO `photo` VALUES (41,'1','photo2.jpg',0,0,0,0,0,0,0,3,'YakYong Jong&who are you&333379007041276^YakYong Jong&very good.&333379007041276^YakYong Jong& another things.&333379007041276',1,'333379007041276&YakYong Jong','this is my second comment','Alexsandria',0);
 INSERT INTO `photo` VALUES (42,'1','photo3.jpg',0,0,0,0,0,0,0,0,'',2,'333379007041276&YakYong Jong^333379007041276&YakYong Jong','aboutphoto','Alexsandria',0);
 INSERT INTO `photo` VALUES (43,'1','photo4.jpg',0,0,0,0,0,0,0,0,'',2,'333379007041276&YakYong Jong^333379007041276&YakYong Jong','this is my fourth comment','Alexsandria',0);
-INSERT INTO `photo` VALUES (44,'1','photo5.jpg',0,0,0,0,0,0,0,0,'',2,'333379007041276&YakYong Jong^333379007041276&YakYong Jong','this is my fifth comment','Alexsandria',0);
-INSERT INTO `photo` VALUES (45,'1','photo6.jpg',0,0,0,0,0,0,0,0,'',2,'333379007041276&YakYong Jong^333379007041276&YakYong Jong','this is my sixth comment','Alexsandria',0);
+INSERT INTO `photo` VALUES (44,'23','photo5.jpg',0,0,0,0,0,0,0,0,'',2,'333379007041276&YakYong Jong^333379007041276&YakYong Jong','this is my fifth comment','Alexsandria',0);
+INSERT INTO `photo` VALUES (45,'23','photo6.jpg',0,0,0,0,0,0,0,0,'',2,'333379007041276&YakYong Jong^333379007041276&YakYong Jong','this is my sixth comment','Alexsandria',0);
 INSERT INTO `photo` VALUES (52,'333379007041276','photo7.jpg',0,0,0,0,0,0,0,0,'',0,'','Hello','YYj',0);
 INSERT INTO `photo` VALUES (53,'333379007041276','photo4.jpg',0,0,0,0,0,0,0,1,'Jane&who are you&1',0,'','Hello','YYj',0);
 INSERT INTO `photo` VALUES (54,'333379007041276','photo3.jpg',0,0,0,0,0,0,0,0,'',1,'1&Jane','gggggggggggggg','YYj',0);
@@ -243,9 +255,9 @@ INSERT INTO `photo` VALUES (94,'3','photo1.jpg',44,53,0,0,0,0,0,1,'YakYong Jong&
 INSERT INTO `photo` VALUES (98,'3','photo5.jpg',7,18,0,0,0,0,0,0,'',0,' ','hello','Jane',0);
 INSERT INTO `photo` VALUES (99,'3','photo6.jpg',14,27,0,0,0,1,0,0,'',0,' ',' dok','Jane',0);
 INSERT INTO `photo` VALUES (100,'3','photo7.jpg',24,25,0,0,0,1,0,0,'',0,' ',' missing pot','Jane',0);
-INSERT INTO `photo` VALUES (101,'3','photo8.jpg',35,23,0,0,0,0,0,0,'',0,' ','probable','Jane',0);
-INSERT INTO `photo` VALUES (102,'3','photo2.jpg',37,22,0,0,0,0,0,0,'',3,'333379007041276&tom^333379007041276&tom^333379007041276&tom','Hello','Jane',0);
-INSERT INTO `photo` VALUES (103,'3','photo3.jpg',20,23,0,0,0,0,0,0,'',0,' ','Hello','Jane',0);
+INSERT INTO `photo` VALUES (101,'2','photo8.jpg',35,23,0,0,0,0,0,0,'',0,' ','probable','Jane',0);
+INSERT INTO `photo` VALUES (102,'2','photo2.jpg',37,22,0,0,0,0,0,0,'',3,'333379007041276&tom^333379007041276&tom^333379007041276&tom','Hello','Jane',0);
+INSERT INTO `photo` VALUES (103,'2','photo3.jpg',20,23,0,0,0,0,0,0,'',0,' ','Hello','Jane',0);
 INSERT INTO `photo` VALUES (115,'333379007041276','photo8.jpg',0,0,0,0,0,0,0,0,'',0,'','Beautiful?','YYj',0);
 INSERT INTO `photo` VALUES (116,'333379007041276','photo8.jpg',0,0,0,0,0,0,0,0,'',0,'','Very Gook!','YYj',0);
 INSERT INTO `photo` VALUES (117,'333379007041276','face6.png',0,0,0,0,0,0,0,0,'',0,'','Hello','YYj',0);
@@ -257,9 +269,11 @@ INSERT INTO `photo` VALUES (122,'333379007041276','face1.png',0,0,0,0,0,0,0,0,''
 INSERT INTO `photo` VALUES (123,'333379007041276','photo8.jpg',0,0,0,0,0,0,0,0,'',0,'','See me!','YYj',0);
 INSERT INTO `photo` VALUES (127,'44','photo3.jpg',73,11,0,0,0,0,0,0,'',0,'','hello','jim',7);
 INSERT INTO `photo` VALUES (128,'44','photo4.jpg',73,11,0,0,0,0,0,0,'',0,'','My Photo!','jim',7);
-INSERT INTO `photo` VALUES (144,'5','photo4.jpg',19,16,0,0,0,0,0,0,'',0,' ',' you a 333','Baddy',0);
-INSERT INTO `photo` VALUES (145,'3','photo4.jpg',19,16,0,0,0,0,0,0,'',0,' ',' you a 333','Jane',0);
+INSERT INTO `photo` VALUES (145,'2','photo4.jpg',19,16,0,0,0,0,0,0,'',0,' ',' you a 333','Jane',0);
 INSERT INTO `photo` VALUES (146,'2','photo4.jpg',19,16,0,0,0,0,0,0,'',0,' ',' you a 333','Alexandria',0);
+INSERT INTO `photo` VALUES (148,'5','photo5.jpg',19,16,0,0,0,0,0,0,'',0,' ',' you a 333','Baddy',0);
+INSERT INTO `photo` VALUES (149,'5','photo3.jpg',19,16,0,0,0,0,0,0,'',0,' ',' you a 333','Baddy',0);
+INSERT INTO `photo` VALUES (150,'5','photo2.jpg',19,16,0,0,0,0,0,0,'',0,' ',' you a 333','Baddy',0);
 /*!40000 ALTER TABLE `photo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +295,7 @@ CREATE TABLE `users` (
   `locationx` float DEFAULT NULL,
   `locationy` float DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table users
@@ -292,10 +306,11 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'1','Jane','aa','man',18,'10','photo1.jpg','aemail',0,0);
 INSERT INTO `users` VALUES (2,'2','Alexandria','bb','man',19,'5','photo2.jpg','aemail',1,1);
 INSERT INTO `users` VALUES (6,'23','Moppy',NULL,NULL,19,NULL,'photo3.jpg','aemail',0,0);
-INSERT INTO `users` VALUES (7,'333379007041276','YakYong Jong',NULL,'male',18,'0','photo8.jpg','jyyblue1987@outlook.com',0,0);
 INSERT INTO `users` VALUES (9,'3','Pumbba','dd','man',52,'0','photo6.jpg','fnbvgh',0,0);
 INSERT INTO `users` VALUES (10,'5','Baddy',NULL,'male',23,'0','photo5.jpg','gmail.com',0,0);
 INSERT INTO `users` VALUES (11,'44','Baddy',NULL,'male',23,'0','photo7.jpg','outlook.com',0,0);
+INSERT INTO `users` VALUES (12,'333379007041276','YakYong Jong',NULL,'male',18,'0','','jyyblue1987@outlook.com',0,0);
+INSERT INTO `users` VALUES (13,'337825819928904','Sin Mi Rae',NULL,'female',18,'0','','future.syg414@yahoo.com',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
