@@ -29,6 +29,7 @@ var myprofile= require('./routes/myprofile');
 var deletefriend = require('./routes/deletefriend');
 var readnotification = require('./routes/readnotification');
 var getnotificationsize = require('./routes/getnotificationsize');
+var findbyname = require('./routes/findbyname');
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 var app = express();
@@ -76,6 +77,7 @@ app.post('/routes/myprofile', myprofile.myprofile_post);
 app.post('/routes/deletefriend',deletefriend.deletefriend);
 app.post('/routes/readnotification', readnotification.readnotification);
 app.post('/routes/getnotificationsize', getnotificationsize.getnotificationsize);
+app.post('/routes/findbyname', findbyname.findbyname);
 
 
 //app.get('/routes/deletefriend',deletefriend.deletefriend);
