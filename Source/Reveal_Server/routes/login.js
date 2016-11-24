@@ -31,7 +31,7 @@ exports.login = function(req, res){
 //    var locationx = url_parts.query.locationx;
 //    var locationy = url_parts.query.locationy;
 //    var othergender = url_parts.query.othergender;
-    var sql = "SELECT facebookid FROM users WHERE facebookid='"+facebookid +"'";//email='"+ email+"' AND age='"+ age +"' AND firstname='"+name+"'";
+    var sql = "SELECT facebookid FROM users WHERE facebookid='" + facebookid +"'";//email='"+ email+"' AND age='"+ age +"' AND firstname='"+name+"'";
     console.log(sql);
     global.mysql.query(sql, function(err,rows){
         if(err){
@@ -192,9 +192,13 @@ getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid, fi
         finalMatchF = finalMatchF + ", " + MatchAndFriend4;
     };
 
-    finalMatchF = finalMatchF + ", '"+ facebookid + "'";
+    if(finalMatchF == ""){
+        finalMatchF = facebookid;
+    }else{
+        finalMatchF = finalMatchF + ", '"+ facebookid + "'";
+    }
     var query;
-    if(first == 1){
+    if(first == 0){
         query = "SELECT facebookid FROM users WHERE facebookid NOT IN(" + finalMatchF +")";
     }else{
         query = "SELECT facebookid FROM users";
