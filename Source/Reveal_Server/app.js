@@ -30,6 +30,10 @@ var deletefriend = require('./routes/deletefriend');
 var readnotification = require('./routes/readnotification');
 var getnotificationsize = require('./routes/getnotificationsize');
 var findbyname = require('./routes/findbyname');
+var blockmatch = require('./routes/blockmatch');
+var checkblock = require('./routes/checkblock');
+var getnotification = require('./routes/getnotification');
+
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 var app = express();
@@ -78,6 +82,9 @@ app.post('/routes/deletefriend',deletefriend.deletefriend);
 app.post('/routes/readnotification', readnotification.readnotification);
 app.post('/routes/getnotificationsize', getnotificationsize.getnotificationsize);
 app.post('/routes/findbyname', findbyname.findbyname);
+app.post('/routes/blockmatch',blockmatch.blockmatch);
+app.post('/routes/checkblock', checkblock.checkblock);
+app.post('/routes/getnotification',getnotification.getnotification);
 
 
 //app.get('/routes/deletefriend',deletefriend.deletefriend);

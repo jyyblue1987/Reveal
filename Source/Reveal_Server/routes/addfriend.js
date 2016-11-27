@@ -14,22 +14,27 @@ exports.addfriend = function(req, res) {
 
     //var url_parts = url.parse(req.url, true);
     var facebookid = req.body.facebookid;
+    var name1 = req.body.name1;
     var sendfacebookid =  req.body.sendfacebookid;
     var request =  req.body.request;
     var checkedtime =  req.body.checkedtime;
+    var sender_name = req.body.sender_name;
 
 
     if(request == "requestfriend"){
         // add notification about this message
         var sendtime = "10";// new Date.toString();
-        var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" +
-            sendfacebookid + "', '"+ facebookid +"', 'requestfriend', '" + sendtime +"')";
+        var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval,sender_name) VALUES ('" +
+            sendfacebookid + "', '"+ facebookid +"', 'requestfriend', '" + sendtime +"', '" + "" + "', '" + sender_name + "')";
         global.mysql.query(newfeedquery, function(err, newresult){
             if(err){
 
             }
-            console.log(newfeedquery);
-            res.send(200, "success");
+            var data = {};
+            data.retcode=200;
+            data.error_msg = "";
+            data.content = "success";
+            res.send(200, data);
 
         });
     } else if(request=="acceptfriend"){
@@ -67,19 +72,31 @@ exports.addfriend = function(req, res) {
                 }else{
 
                     // insert added friend notification
-                    var added1 = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" + facebookid + "', '"+sendfacebookid +
-                        "', 'acceptfriend', '"  +sendtime+ "')";
-                    var added2 = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" + sendfacebookid + "', '"+facebookid   +
-                        "', 'acceptfriend', '"  +sendtime+ "')";
+                    var added1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" + facebookid + "', '"+sendfacebookid +
+                        "', 'acceptfriend', '"  +sendtime+ "', '" + "" + "', '" + sender_name + "')";
+                    var added2 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" + sendfacebookid + "', '"+facebookid   +
+                        "', 'acceptfriend', '"  +sendtime+ "', '" + "" + "', '" + sender_name + "')";
                     global.mysql.query(added1, function(er,result){
+                        //var data = {};
+                        //data.retcode=200;
+                        //data.error_msg = "";
+                        //data.content = "success";
+                        //res.send(200, data);
+
                         console.log(result);
                     });
                     global.mysql.query(added2, function(er,result){
+                        //var data = {};
+                        //data.retcode=200;
+                        //data.error_msg = "";
+                        //data.content = "success";
+                        //res.send(200, data);
                         console.log(result);
                     });
 
                     //INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('a', 'g', 'matchRequest', '0')
-                    var addfriend ="INSERT INTO friend (facebookid1, facebookid2) VALUES ('" + facebookid + "', '"+sendfacebookid +"')";
+                    var addfriend ="INSERT INTO friend (facebookid1, facebookid2, name1, name2) VALUES ('"
+                        + facebookid + "', '"+sendfacebookid +"', '"+name1+"', '"+sender_name+"')";
                     global.mysql.query(addfriend, function(err, addresult){
                         if(err){
 
@@ -101,8 +118,19 @@ exports.addfriend = function(req, res) {
 
     }else if(request=="friendadd"){ // request to be friend with you. // add notification table.
 
-        var query = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" + sendfacebookid + "', '" + facebookid + "', 'friendadd', '10')";
+        var query = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
+            + sendfacebookid + "', '" + facebookid + "', 'friendadd', '10', '" + "" + "', '" + sender_name + "')";
         global.mysql.query(query, function(err, result){
+            var data1 = {};
+            var ret = {};
+            //ret.sender = sendfacebookid;
+            //ret.destination = facebookid;
+            //ret.notekind = "friendadd";
+            //data1.retcode = 234;
+            //data1.error_msg = "";
+            //data1.content = ret;
+            //global.io.sockets.in(facebookid).emit("notification", data1);
+
             var data = {};
             data.retcode=200;
             data.error_msg = "";
@@ -110,7 +138,9 @@ exports.addfriend = function(req, res) {
             res.send(200, data);
         });
     }else if(request == "friendaccept"){ // if someone accept the friend request
-        var queryadd = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" + sendfacebookid + "', '" + facebookid + "', 'friendaccept', '10')"; // add notification table as the receivers notification
+        var queryadd = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
+            + sendfacebookid + "', '" + facebookid + "', 'friendaccept', '10', '" + "" +"', '" + sender_name + "')";
+            // add notification table as the receivers notification
         global.mysql.query(queryadd, function(err, result){
             if(err){
                 var data = {};
@@ -120,31 +150,34 @@ exports.addfriend = function(req, res) {
                 res.send(200, data);
 
             }
-            var data = {};
-            data.retcode=200;
-            data.error_msg = "";
-            data.content = "success";
-            res.send(200, data);
+            var data1 = {};
+            var ret = {};
+            data1.retcode = 200;
+            data1.error_msg = "";
+            data1.content = ret;
+            res.send(200, data1);
+            //global.io.sockets.in(facebookid).emit("notification", data1);
 
         });
 
         // add friend table
-        var queryfriend = "INSERT INTO friend (facebookid1, facebookid2) VALUES ('" + sendfacebookid + "', '" + facebookid + "'";
+        var queryfriend = "INSERT INTO friend (facebookid1, facebookid2, name1, name2) VALUES ('"
+            + sendfacebookid + "', '" + facebookid + "', '"+ sender_name +"', '" + name1 + "')";
         global.mysql.query(queryfriend, function(err, result){
             if(err){
-                var data = {};
-                data.retcode=201;
-                data.error_msg = "";
-                data.content = "fail";
-                res.send(200, data);
+                //var data = {};
+                //data.retcode=201;
+                //data.error_msg = "";
+                //data.content = "fail";
+                //res.send(200, data);
 
             }
-            var data = {};
-            data.retcode=200;
-            data.error_msg = "";
-            data.content = "success";
-            res.send(200, data);
+            //var data = {};
+            //data.retcode=200;
+            //data.error_msg = "";
+            //data.content = "success";
+            //res.send(200, data);
 
-        })
+        });
     }
 }

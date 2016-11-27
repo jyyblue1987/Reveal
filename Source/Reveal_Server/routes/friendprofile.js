@@ -79,15 +79,8 @@ exports.friendprofile = function(req, res) {
                     data.retcode = 400;
                     data.error_msg = "No such man";
                     return res.send(200,data);
-
                 }
-
             });
-
-
         }
-        //else if(isfriendormatch != "friend"){
-        //    //getmatch(facebookid, sendfacebookid);
-        //}
     });
 }

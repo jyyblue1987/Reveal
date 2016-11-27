@@ -16,6 +16,7 @@ exports.newfeed = function(req, res){
     var group            = req.body.group;
     var aboutphoto       = req.body.aboutphoto;
     var rate             = req.body.rate;
+    var sender_name      = req.body.sender_name;
 
     // first update the photo database
     var upphotoquery = "UPDATE photo SET mycomment='"+ aboutphoto
@@ -49,12 +50,24 @@ exports.newfeed = function(req, res){
                 for(var i=0; i<rows2.length; i++){
                     friend1 = rows2[i].facebookid2;
                     var sendtime = 11;
-                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval) VALUES ('" +
-                        facebookid + "', '"+ friend1 +"', 'newfeed', '" + sendtime +"', '" + photopath +"')";
+                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
+                        facebookid + "', '"+ friend1 +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "')";
                     global.mysql.query(newfeedquery, function(err, newresult){
                         if(err){
 
                         }
+                        var data1 = {};
+                        var ret = {};
+                        ret.sender = facebookid;
+                        ret.destination = friend1;
+                        ret.notekind = "newfeed";
+                        ret.feedval = photopath;
+                        data1.retcode = 234;
+                        data1.error_msg = "";
+                        data1.content = ret;
+                        global.io.sockets.in(friend1).emit("notification", data1);
+
+
                         console.log(newfeedquery);
                     });
                 }
@@ -82,8 +95,8 @@ exports.newfeed = function(req, res){
                     var sendtime = 11;
                     friend2 = rows3[x].facebookid1;
                     var sendtime = new Date().toString();
-                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval) VALUES ('" +
-                        facebookid + "', '"+ friend2 +"', 'newfeed', '" + sendtime +"', '" + photopath +"')";
+                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
+                        facebookid + "', '"+ friend2 +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "')";
                     global.mysql.query(newfeedquery, function(err, newresult){
                         if(err){
 
@@ -111,8 +124,8 @@ exports.newfeed = function(req, res){
             }
             if(result.length > 0){
                 var sendtime = new Date().toString();
-                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" +
-                    facebookid + "', '"+ group +"', 'newfeed', '" + sendtime +"', '" + photopath +"')";
+                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
+                    facebookid + "', '"+ group +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "')";
                 global.mysql.query(newfeedquery, function(err, newresult){
                    if(err){
 
@@ -129,8 +142,8 @@ exports.newfeed = function(req, res){
             }
             if(result.length > 0) {
                 var sendtime = new Date().toString();
-                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" +
-                    facebookid + "', '" + group + "', 'newfeed', '" + sendtime + "', '" + photopath + "')";
+                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval,sender_name) VALUES ('" +
+                    facebookid + "', '" + group + "', 'newfeed', '" + sendtime + "', '" + photopath + "', '" + sender_name + "')";
                 global.mysql.query(newfeedquery, function (err, newresult) {
                     if (err) {
 

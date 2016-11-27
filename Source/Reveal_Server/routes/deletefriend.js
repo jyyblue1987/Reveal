@@ -22,9 +22,9 @@ exports.deletefriend = function(req, res) {
 
         }
         var data = {};
-        data.retcode = 300;
+        data.retcode = 200;
         data.content = "ok";
-        data.error_msg = "Error sql server";
+        data.error_msg = "";
         return res.send(200,data);
 
     });

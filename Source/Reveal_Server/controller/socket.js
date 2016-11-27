@@ -4,9 +4,9 @@ global.io.sockets.on('connection',function(socket){
     socket.on('joinRoom',function(data){
         room_id = data;
         socket.join(room_id);
-        sendNotification(room_id);
         console.log('JOIN ROOM LIST', global.io.sockets.adapter.rooms);
     });
+
     socket.on('leaveRoom',function(){
         socket.leave(room_id);
         console.log('OUT ROOM LIST', global.io.sockets.adapter.rooms);
@@ -86,7 +86,7 @@ saveChatHistory=function(sender, message, receiver){
 }
 
 sendNotification = function(facebookid){
-    var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "'";
+    var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "' AND state='0'";
     global.mysql.query(notequery, function(err, result){
         var data = {};
         data.retcode = 200;

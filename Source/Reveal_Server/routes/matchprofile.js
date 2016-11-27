@@ -67,7 +67,8 @@ exports.matchprofile = function(req, res) {
                 }
 
                 if (rows3.length > 0 ) {
-                    var newfeedquery = "SELECT facebookid, photopath, ratesum, ratenumber, commentnum, likenum FROM photo WHERE facebookid='" + facebookid + "'";
+                    var newfeedquery = "SELECT facebookid, photopath, ratesum, ratenumber, commentnum, likenum FROM photo WHERE facebookid='"
+                        + facebookid + "'";
                     global.mysql.query(newfeedquery, function (err, newresult) {
                         if (err) {
                             var data = {};

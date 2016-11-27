@@ -12,10 +12,10 @@ exports.rated = function(req, res){
     var facebookid     =req.body.facebookid;
     var rating         = parseInt(req.body.rating);
     var report         = req.body.report;
+    var sender_name    = req.body.sender_name;
+    var name1          = req.body.name1;
 
-    //global.io.sockets.in(facebookid).emit('324234', data);
-
-    var responsematchrequest = req.body.responsematchrequest;
+   var responsematchrequest = req.body.responsematchrequest;
 
     // find photo with facebookid and photopath.
     var query = "SELECT * FROM photo WHERE facebookid='" + facebookid + "' AND photopath='" + photopath + "'";
@@ -78,23 +78,43 @@ exports.rated = function(req, res){
                 if(responsematchrequest == ""){
                     // this is match request
                     var sendtime = 10;
-                    var notiquery = "INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('" +
-                        sendfacebookid + "', '"+ facebookid +"', 'matchRequest', '" + sendtime +"')";
+                    var notiquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
+                        sendfacebookid + "', '"+ facebookid +"', 'matchRequest', '" + sendtime +"', '', '" + sender_name + "')";
                     global.mysql.query(notiquery, function(err, noresult){
                         if(err){
 
                         }
+
+                        var data1 = {};
+                        var ret = {};
+                        ret.sender = sendfacebookid;
+                        ret.destination = facebookid;
+                        ret.notekind = "matchRequest";
+                        data1.retcode = 234;
+                        data1.error_msg = "";
+                        data1.content = ret;
+                        global.io.sockets.in(facebookid).emit("notification", data1);
+
                         console.log(notiquery);
                         res.send(200,"success");  // end point
                     });
                 }else if(responsematchrequest == "accept"){
                     // delete notification  , add match table already delete above.
                     ////INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('a', 'g', 'matchRequest', '0')
-                    var addmatchquery = "INSERT INTO matching (facebookid1, facebookid2) VALUES ('"+ sendfacebookid+ "', '"+ facebookid + "')";
+                    var addmatchquery = "INSERT INTO matching (facebookid1, facebookid2, name1, name2) VALUES ('"
+                        + sendfacebookid+ "', '"+ facebookid + "', '"+sender_name+"', '"+name1+"')";
                     global.mysql.query(addmatchquery, function(err, addresult){
                         console.log(addmatchquery);
                         res.send(200,"success");  // end point
                     });
+
+                    // insert new match notification to notification table.
+                    var newmatch1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
+                        sendfacebookid + "', '"+ facebookid +"', 'newmatch', '10', '', '" + sender_name + "')";
+                    var newmatch2 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
+                        facebookid + "', '"+ sendfacebookid +"', 'newmatch', '10', '', '" + sender_name + "')";
+                    global.mysql.query(newmatch1, function(err, result1){});
+                    global.mysql.query(newmatch2, function(err, result2){});
                 }else //if(responsematchrequest == "refuse")
                 {
                     // delete notification ,already delete above

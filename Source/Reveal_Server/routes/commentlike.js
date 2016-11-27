@@ -45,7 +45,7 @@ exports.commentlike = function(req, res) {
                     if(likefacebookid.indexOf(sendfacebookid) > -1) {
                         // return error.
                         var data = {};
-                        data.retcode = 201;
+                        data.retcode = 333;
                         data.error_msg = "You already like this photo.";
                         //res.json(data);
                         return res.send(200,data);
@@ -62,13 +62,26 @@ exports.commentlike = function(req, res) {
                     if(err){
 
                     }
-                    var data = {};
-                    data.retcode = 200;
-                    data.error_msg = "";
-                    //res.json(data);
-                    return res.send(200,data);
+                    //var data = {};
+                    //data.retcode = 200;
+                    //data.error_msg = "";
+                    ////res.json(data);
+                    //return res.send(200,data);
                 });
+                var aaa = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
+                    + sendfacebookid + "', '" + facebookid + "', 'like', '10' , '" + photopath + "', '" + sendname + "')";
+                global.mysql.query(aaa, function(err, result){
 
+                    if(err){
+
+                    }
+                    //console.log(aaa);
+                    //var data = {};
+                    //data.retcode = 200;
+                    //data.error_msg = "";
+                    ////res.json(data);
+                    //return res.send(200,data);
+                })
             }
         });
     }else{
@@ -103,12 +116,13 @@ exports.commentlike = function(req, res) {
                     if(err){
 
                     }
-                    var notequery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval) VALUES ('" + sendfacebookid + "', '" + facebookid + "', 'comment', '10', '"
-                        + photopath+ "')";
+                    var notequery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
+                        + sendfacebookid + "', '" + facebookid + "', 'comment', '10', '" + photopath + "', '" + sendname + "')";
                     global.mysql.query(notequery, function(err, result){
                         if(err){
 
                         }
+
                         console.log(commentquery);
                         var data = {};
                         data.retcode = 200;
