@@ -75,7 +75,9 @@ exports.newfeed = function(req, res){
             queryComplete = queryComplete + 1;
             if(queryComplete == 2){
                 // here finish adding the newfeed notification message and return;
-                res.send(200,"success");  // end point
+                var data = {};
+                data.retcode = 200;
+                res.send(200,data);  // end point
             }
 
         });
@@ -109,8 +111,10 @@ exports.newfeed = function(req, res){
 
             if(queryComplete == 2){
                 // here finish adding the newfeed notification message and return;
-                res.send(200,"success");  // end point
-            }
+                var data = {};
+                data.retcode = 200;
+                res.send(200,data);  // end point
+             }
 
         });
 

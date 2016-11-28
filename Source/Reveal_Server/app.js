@@ -33,6 +33,7 @@ var findbyname = require('./routes/findbyname');
 var blockmatch = require('./routes/blockmatch');
 var checkblock = require('./routes/checkblock');
 var getnotification = require('./routes/getnotification');
+var gettotalrate = require('./routes/gettotalrate');
 
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
@@ -85,6 +86,7 @@ app.post('/routes/findbyname', findbyname.findbyname);
 app.post('/routes/blockmatch',blockmatch.blockmatch);
 app.post('/routes/checkblock', checkblock.checkblock);
 app.post('/routes/getnotification',getnotification.getnotification);
+app.post('/routes/gettotalrate', gettotalrate.gettotalrate);
 
 
 //app.get('/routes/deletefriend',deletefriend.deletefriend);

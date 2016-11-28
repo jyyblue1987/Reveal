@@ -66,7 +66,7 @@ exports.rated = function(req, res){
                 var rate = ratesum/rateNumber;
 
                 var updatequery = "UPDATE photo SET ratesum='"+ ratesum +"', "+ "ratenumber='" + rateNumber + "', rate='" + rate + "'"
-                                            +"' WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
+                                            +" WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
                 global.mysql.query(updatequery, function(err, udresult){
                     console.log(updatequery);
                 });
@@ -112,7 +112,7 @@ exports.rated = function(req, res){
                     var newmatch1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
                         sendfacebookid + "', '"+ facebookid +"', 'newmatch', '10', '', '" + sender_name + "')";
                     var newmatch2 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
-                        facebookid + "', '"+ sendfacebookid +"', 'newmatch', '10', '', '" + sender_name + "')";
+                        facebookid + "', '"+ sendfacebookid +"', 'newmatch', '10', '', '" + name1 + "')";
                     global.mysql.query(newmatch1, function(err, result1){});
                     global.mysql.query(newmatch2, function(err, result2){});
                 }else //if(responsematchrequest == "refuse")

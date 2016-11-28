@@ -1,6 +1,6 @@
 /**
  * Created by JonIC on 2016-11-26.
- */
+*/
 url = require('url');
 exports.checkblock = function(req, res) {
     console.log(req);
@@ -21,7 +21,7 @@ exports.checkblock = function(req, res) {
         if(result.length == 0){
             var data = {};
             data.retcode = 200;
-            data.error_msg = "cool match";
+            data.error_msg = "";
             //res.json(data);
             return res.send(200,data);
         }

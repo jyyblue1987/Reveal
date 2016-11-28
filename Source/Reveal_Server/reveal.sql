@@ -29,7 +29,7 @@ CREATE TABLE `block` (
   `blockfacebookid` varchar(255) DEFAULT '',
   `blocksort` varchar(255) DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table block
@@ -37,10 +37,7 @@ CREATE TABLE `block` (
 
 LOCK TABLES `block` WRITE;
 /*!40000 ALTER TABLE `block` DISABLE KEYS */;
-INSERT INTO `block` VALUES (2,'337825819928904','2','Inappropriate Messages');
-INSERT INTO `block` VALUES (3,'333379007041276','23','Block without reporting');
-INSERT INTO `block` VALUES (4,'333379007041276','1','Block without reporting');
-INSERT INTO `block` VALUES (5,'337825819928904','1','Inappropriate Messages');
+INSERT INTO `block` VALUES (6,'333379007041276','337825819928904','Feels Like Spam');
 /*!40000 ALTER TABLE `block` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,8 +63,11 @@ LOCK TABLES `chat` WRITE;
 /*!40000 ALTER TABLE `chat` DISABLE KEYS */;
 INSERT INTO `chat` VALUES (2,'1','333379007041276','Hello!',0);
 INSERT INTO `chat` VALUES (4,'333379007041276','1','Hi',0);
-INSERT INTO `chat` VALUES (5,'333379007041276','337825819928904','HELLO',0);
-INSERT INTO `chat` VALUES (6,'337825819928904','333379007041276','hi',0);
+INSERT INTO `chat` VALUES (7,'337825819928904','1','hello',0);
+INSERT INTO `chat` VALUES (8,'337825819928904','333379007041276','hello',0);
+INSERT INTO `chat` VALUES (9,'333379007041276','337825819928904','HI',0);
+INSERT INTO `chat` VALUES (10,'333379007041276','337825819928904','AAA',0);
+INSERT INTO `chat` VALUES (11,'337825819928904','333379007041276','BBB',0);
 /*!40000 ALTER TABLE `chat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +83,7 @@ CREATE TABLE `friend` (
   `name1` varchar(255) DEFAULT '',
   `name2` varchar(255) DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table friend
@@ -92,9 +92,6 @@ CREATE TABLE `friend` (
 LOCK TABLES `friend` WRITE;
 /*!40000 ALTER TABLE `friend` DISABLE KEYS */;
 INSERT INTO `friend` VALUES (6,'1','3','Jane','Pumbba');
-INSERT INTO `friend` VALUES (7,'3','1','Pumbba','Jane');
-INSERT INTO `friend` VALUES (26,'1','333379007041276','Jane','yyj');
-INSERT INTO `friend` VALUES (27,'337825819928904','333379007041276','Sin Mi Rae','YakYong Jong');
 /*!40000 ALTER TABLE `friend` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,8 +117,7 @@ LOCK TABLES `matching` WRITE;
 /*!40000 ALTER TABLE `matching` DISABLE KEYS */;
 INSERT INTO `matching` VALUES (1,'1','2','Jane','Alexandria');
 INSERT INTO `matching` VALUES (2,'1','3','Jane','Pumbba');
-INSERT INTO `matching` VALUES (27,'333379007041276','23','yyj','Moppy');
-INSERT INTO `matching` VALUES (32,'337825819928904','2','Sinnon','Alexandria');
+INSERT INTO `matching` VALUES (34,'337825819928904','1','simmon','Jane');
 /*!40000 ALTER TABLE `matching` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +136,7 @@ CREATE TABLE `notification` (
   `state` int(11) DEFAULT '0',
   `sender_name` varchar(255) DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=894 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=932 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table notification
@@ -148,213 +144,48 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
-INSERT INTO `notification` VALUES (1,'a','g','matchRequest',0,' ',0,'');
-INSERT INTO `notification` VALUES (231,'333379007041276','2','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (233,'2','11','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (589,'333379007041276','3','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (590,'1','11','requestfriend',0,'photo2.jpg',0,'');
-INSERT INTO `notification` VALUES (591,'1','11','acceptfriend',0,'photo2.jpg',0,'');
-INSERT INTO `notification` VALUES (593,'1','11','comment',0,'photo4.jpg',0,'');
-INSERT INTO `notification` VALUES (594,'2','11','matchRequest',0,'photo7.jpg',0,'');
-INSERT INTO `notification` VALUES (596,'1','11','message',10,'aaaa',0,'');
-INSERT INTO `notification` VALUES (597,'1','11','like',10,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (606,'1','333379007041276','newfeed',11,'photo2.jpg',1,'');
-INSERT INTO `notification` VALUES (661,'2','111111111111111','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (662,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (663,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (665,'333379007041276','3','comment',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (698,'5','111111111111111','requestfriend',0,'photo2.jpg',1,'');
-INSERT INTO `notification` VALUES (699,'1','111111111111111','acceptfriend',0,'photo2.jpg',1,'');
-INSERT INTO `notification` VALUES (700,'1','333379007041276','newmatch',0,'photo8.jpg',1,'');
-INSERT INTO `notification` VALUES (701,'1','111111111111111','comment',0,'photo4.jpg',1,'');
-INSERT INTO `notification` VALUES (704,'1','111111111111111','message',10,'aaaa',1,'');
-INSERT INTO `notification` VALUES (705,'1','111111111111111','like',10,'photo3.jpg',1,'');
-INSERT INTO `notification` VALUES (706,'1','333379007041276','newfeed',11,'photo2.jpg',1,'');
-INSERT INTO `notification` VALUES (707,'1','333379007041276','newfeed',0,'photo2.jpg',1,'');
-INSERT INTO `notification` VALUES (708,'1','333379007041276','newfeed',0,'photo2.jpg',1,'');
-INSERT INTO `notification` VALUES (709,'1','333379007041276','newfeed',0,'photo3.jpg',1,'');
-INSERT INTO `notification` VALUES (714,'333379007041276','23','requestfriend',10,' ',0,'');
-INSERT INTO `notification` VALUES (716,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (718,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (720,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (722,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (724,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (726,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (728,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (730,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (732,'5','11','requestfriend',0,'photo2.jpg',0,'');
-INSERT INTO `notification` VALUES (737,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (738,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (739,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (740,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (741,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (742,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (743,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (744,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (746,'5','111111111111111','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (747,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (748,'333379007041276','5','requestfriend',10,' ',0,'');
-INSERT INTO `notification` VALUES (749,'5','111111111111111','acceptfriend',0,'  ',0,'');
-INSERT INTO `notification` VALUES (750,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (751,'333379007041276','1','requestfriend',10,' ',0,'');
-INSERT INTO `notification` VALUES (752,'333379007041276','5','requestfriend',10,' ',0,'');
-INSERT INTO `notification` VALUES (753,'5','11111111111111','acceptfriend',0,' ',1,'');
-INSERT INTO `notification` VALUES (754,'333379007041276','5','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (755,'333379007041276','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (756,'333379007041276','111111111111111','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (757,'111111111111111','111111111111111','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (758,'333379007041276','111111111111111','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (759,'111111111111111','111111111111111','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (760,'333379007041276','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (761,'333379007041276','111111111111111','acceptfriend',0,' ',0,'');
-INSERT INTO `notification` VALUES (762,'111111111111111','111111111111111','acceptfriend',0,'  ',0,'');
-INSERT INTO `notification` VALUES (763,'111111111111111','111111111111111','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (764,'333379007041276','44','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (765,'333379007041276','5','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (766,'333379007041276','5','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (767,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (768,'','111111111111111','friendadd',10,'',0,'');
-INSERT INTO `notification` VALUES (769,'1','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (770,'1','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (771,'1','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (772,'1','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (773,'','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (774,'','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (775,'','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (776,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (777,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (778,'333379007041276','5','like',10,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (779,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (780,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (781,'333379007041276','5','like',10,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (782,'333379007041276','5','like',10,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (783,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (784,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (785,'333379007041276','5','like',10,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (786,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (787,'333379007041276','5','like',10,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (788,'333379007041276','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (789,'333379007041276','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (790,'333379007041276','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (791,'333379007041276','111111111111111','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (793,'333379007041276','23','requestfriend',10,' ',0,'');
-INSERT INTO `notification` VALUES (794,'333379007041276','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (795,'333379007041276','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (796,'333379007041276','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (797,'333379007041276','5','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (798,'333379007041276','44','friendadd',10,' ',0,'');
-INSERT INTO `notification` VALUES (799,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (800,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (801,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (802,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (803,'333379007041276','337825819928904','friendadd',10,' ',1,'');
-INSERT INTO `notification` VALUES (804,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (805,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (806,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (807,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (808,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (809,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (810,'333379007041276','2','matchRequest',10,'  ',0,'');
-INSERT INTO `notification` VALUES (811,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (812,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (813,'333379007041276','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (814,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (815,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (816,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (817,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (818,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (819,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (820,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (821,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (822,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (823,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (824,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (825,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (826,'333379007041276','3','comment',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (827,'333379007041276','3','comment',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (828,'333379007041276','3','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (829,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (830,'333379007041276','1','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (831,'333379007041276','1','comment',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (832,'333379007041276','1','comment',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (833,'333379007041276','1','like',10,'photo2.jpg',0,'');
-INSERT INTO `notification` VALUES (834,'333379007041276','1','like',10,'photo4.jpg',0,'');
-INSERT INTO `notification` VALUES (835,'333379007041276','1','like',10,'photo4.jpg',0,'');
-INSERT INTO `notification` VALUES (836,'333379007041276','1','like',10,'photo2.jpg',0,'');
-INSERT INTO `notification` VALUES (837,'333379007041276','1','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (838,'333379007041276','1','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (839,'333379007041276','1','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (840,'333379007041276','1','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (841,'333379007041276','1','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (842,'333379007041276','1','like',10,'photo2.jpg',0,'');
-INSERT INTO `notification` VALUES (843,'333379007041276','5','like',10,'photo2.jpg',0,'');
-INSERT INTO `notification` VALUES (844,'333379007041276','1','like',10,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (845,'333379007041276','5','like',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (846,'333379007041276','5','comment',10,'photo5.jpg',0,'');
-INSERT INTO `notification` VALUES (847,'337825819928904','2','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (849,'333379007041276','44','matchRequest',10,' ',0,'');
-INSERT INTO `notification` VALUES (850,'333379007041276','337825819928904','acceptfriend',0,' ',1,'');
-INSERT INTO `notification` VALUES (851,'337825819928904','333379007041276','acceptfriend',0,' ',1,'');
-INSERT INTO `notification` VALUES (852,'337825819928904','333379007041276','like',10,'photo7.jpg',1,'');
-INSERT INTO `notification` VALUES (853,'337825819928904','333379007041276','comment',10,'photo7.jpg',1,'');
-INSERT INTO `notification` VALUES (854,'337825819928904','333379007041276','comment',10,'photo7.jpg',1,'');
-INSERT INTO `notification` VALUES (856,'333379007041276','3','newfeed',0,'photo7.jpg',0,'');
-INSERT INTO `notification` VALUES (857,'333379007041276','5','newfeed',0,'photo7.jpg',0,'');
-INSERT INTO `notification` VALUES (859,'333379007041276','3','newfeed',0,'photo4.jpg',0,'');
-INSERT INTO `notification` VALUES (860,'333379007041276','5','newfeed',0,'photo4.jpg',0,'');
-INSERT INTO `notification` VALUES (862,'333379007041276','3','newfeed',0,'photo7.jpg',0,'');
-INSERT INTO `notification` VALUES (863,'333379007041276','5','newfeed',0,'photo7.jpg',0,'');
-INSERT INTO `notification` VALUES (865,'333379007041276','3','newfeed',0,'photo4.jpg',0,'');
-INSERT INTO `notification` VALUES (866,'333379007041276','5','newfeed',0,'photo4.jpg',0,'');
-INSERT INTO `notification` VALUES (868,'333379007041276','3','newfeed',0,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (869,'333379007041276','5','newfeed',0,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (871,'333379007041276','3','newfeed',0,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (872,'333379007041276','5','newfeed',0,'photo3.jpg',0,'');
-INSERT INTO `notification` VALUES (874,'333379007041276','3','newfeed',0,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (875,'333379007041276','5','newfeed',0,'photo1.jpg',0,'');
-INSERT INTO `notification` VALUES (877,'333379007041276','3','newfeed',0,'face2.png',0,'');
-INSERT INTO `notification` VALUES (878,'333379007041276','337825819928904','newfeed',0,'face2.png',1,'');
-INSERT INTO `notification` VALUES (879,'333379007041276','23','friendadd',10,NULL,0,'');
-INSERT INTO `notification` VALUES (880,'333379007041276','337825819928904','like',10,'photo4.jpg',1,'');
-INSERT INTO `notification` VALUES (881,'333379007041276','337825819928904','comment',10,'photo4.jpg',1,'');
-INSERT INTO `notification` VALUES (882,'333379007041276','3','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (883,'333379007041276','5','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (884,'333379007041276','2','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (885,'333379007041276','2','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (886,'333379007041276','3','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (887,'333379007041276','2','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (888,'333379007041276','44','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (889,'333379007041276','2','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (890,'333379007041276','5','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (891,'333379007041276','3','matchRequest',10,NULL,0,'');
-INSERT INTO `notification` VALUES (892,'333379007041276','23','requestfriend',10,NULL,0,'');
-INSERT INTO `notification` VALUES (893,'333379007041276','1','requestfriend',10,NULL,0,'');
-INSERT INTO `notification` VALUES (894,'337825819928904','333379007041276','like',10,'photo1.jpg',1,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (895,'337825819928904','333379007041276','like',10,'face2.png',1,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (896,'337825819928904','333379007041276','like',10,'photo4.jpg',1,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (897,'337825819928904','333379007041276','like',10,'photo3.jpg',1,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (898,'337825819928904','333379007041276','like',10,'photo2.jpg',1,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (899,'337825819928904','333379007041276','like',10,'photo8.jpg',1,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (900,'333379007041276','1','like',10,'photo2.jpg',0,'YakYong Jong');
-INSERT INTO `notification` VALUES (901,'333379007041276','1','like',10,'photo3.jpg',0,'YakYong Jong');
-INSERT INTO `notification` VALUES (902,'undefined','1','newmatch',10,'',0,'Yan');
-INSERT INTO `notification` VALUES (903,'1','undefined','newmatch',10,'',0,'Yan');
-INSERT INTO `notification` VALUES (904,'undefined','1','newmatch',10,'',0,'Yan');
-INSERT INTO `notification` VALUES (905,'1','undefined','newmatch',10,'',0,'Yan');
-INSERT INTO `notification` VALUES (906,'undefined','1','newmatch',10,'',0,'Yan');
-INSERT INTO `notification` VALUES (907,'1','undefined','newmatch',10,'',0,'Yan');
-INSERT INTO `notification` VALUES (908,'333379007041276','1','newmatch',10,'',0,'Yan');
-INSERT INTO `notification` VALUES (909,'1','333379007041276','newmatch',10,'',1,'Yan');
-INSERT INTO `notification` VALUES (910,'1','333379007041276','acceptfriend',0,'',0,'pak');
-INSERT INTO `notification` VALUES (911,'333379007041276','1','acceptfriend',0,'',0,'pak');
-INSERT INTO `notification` VALUES (912,'333379007041276','337825819928904','newfeed',0,'cdfe450126df128def338b8ea9f661b8.jpg',1,'YakYong Jong');
-INSERT INTO `notification` VALUES (913,'337825819928904','1','requestfriend',10,'',0,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (915,'337825819928904','333379007041276','friendadd',10,'',1,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (916,'337825819928904','1','requestfriend',10,'',0,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (917,'337825819928904','2','requestfriend',10,'',0,'Sin Mi Rae');
-INSERT INTO `notification` VALUES (918,'333379007041276','23','requestfriend',10,'',0,'YakYong Jong');
-INSERT INTO `notification` VALUES (919,'337825819928904','333379007041276','acceptfriend',0,'',0,'YakYong Jong');
-INSERT INTO `notification` VALUES (920,'333379007041276','337825819928904','acceptfriend',0,'',0,'YakYong Jong');
+INSERT INTO `notification` VALUES (589,'1','2','acceptfriend',0,' ',0,'Jane');
+INSERT INTO `notification` VALUES (590,'1','2','requestfriend',0,'photo2.jpg',0,'Jane');
+INSERT INTO `notification` VALUES (591,'1','2','acceptfriend',0,'photo2.jpg',0,'Jane');
+INSERT INTO `notification` VALUES (593,'1','2','comment',0,'photo4.jpg',0,'Jane');
+INSERT INTO `notification` VALUES (596,'1','2','message',10,'aaaa',0,'Jane');
+INSERT INTO `notification` VALUES (597,'1','2','like',10,'photo3.jpg',0,'Jane');
+INSERT INTO `notification` VALUES (606,'1','2','newfeed',11,'photo2.jpg',0,'Jane');
+INSERT INTO `notification` VALUES (972,'1','333379007041276','matchRequest',10,'',0,'Jane');
+INSERT INTO `notification` VALUES (974,'337825819928904','333379007041276','newmatch',10,'',1,'simmon');
+INSERT INTO `notification` VALUES (975,'1','333379007041276','newmatch',10,'',0,'Jane');
+INSERT INTO `notification` VALUES (976,'1','333379007041276','requestfriend',10,'',0,'Jane');
+INSERT INTO `notification` VALUES (977,'333379007041276','337825819928904','acceptfriend',0,'',0,'simmon');
+INSERT INTO `notification` VALUES (978,'337825819928904','333379007041276','acceptfriend',0,'',1,'simmon');
+INSERT INTO `notification` VALUES (979,'1','333379007041276','like',10,'photo4.jpg',0,'Jane');
+INSERT INTO `notification` VALUES (980,'333379007041276','337825819928904','comment',10,'photo4.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (981,'333379007041276','337825819928904','newfeed',11,'b531cc999688c822a5ee0cbbafe47537.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (982,'337825819928904','333379007041276','like',10,'b531cc999688c822a5ee0cbbafe47537.jpg',1,'simmon');
+INSERT INTO `notification` VALUES (983,'337825819928904','333379007041276','comment',10,'b531cc999688c822a5ee0cbbafe47537.jpg',1,'jimmy');
+INSERT INTO `notification` VALUES (984,'337825819928904','333379007041276','comment',10,'b531cc999688c822a5ee0cbbafe47537.jpg',1,'simmon');
+INSERT INTO `notification` VALUES (986,'337825819928904','333379007041276','newmatch',10,'',1,'simmon');
+INSERT INTO `notification` VALUES (987,'333379007041276','337825819928904','newmatch',10,'',0,'jimmy');
+INSERT INTO `notification` VALUES (988,'333379007041276','337825819928904','requestfriend',10,'',1,'jimmy');
+INSERT INTO `notification` VALUES (989,'333379007041276','337825819928904','acceptfriend',0,'',0,'simmon');
+INSERT INTO `notification` VALUES (990,'337825819928904','333379007041276','acceptfriend',0,'',1,'simmon');
+INSERT INTO `notification` VALUES (992,'333379007041276','337825819928904','acceptfriend',0,'',0,'simmon');
+INSERT INTO `notification` VALUES (993,'337825819928904','333379007041276','acceptfriend',0,'',1,'simmon');
+INSERT INTO `notification` VALUES (994,'337825819928904','333379007041276','newmatch',10,'',1,'simmon');
+INSERT INTO `notification` VALUES (995,'333379007041276','337825819928904','newmatch',10,'',0,'jimmy');
+INSERT INTO `notification` VALUES (996,'333379007041276','337825819928904','requestfriend',10,'',1,'jimmy');
+INSERT INTO `notification` VALUES (997,'333379007041276','337825819928904','like',10,'photo4.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (998,'333379007041276','337825819928904','comment',10,'photo4.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (999,'333379007041276','1','comment',10,'photo2.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (1000,'333379007041276','1','comment',10,'photo2.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (1001,'333379007041276','1','comment',10,'photo2.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (1002,'333379007041276','1','comment',10,'photo2.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (1003,'333379007041276','1','comment',10,'photo2.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (1004,'333379007041276','1','comment',10,'photo2.jpg',0,'jimmy');
+INSERT INTO `notification` VALUES (1005,'333379007041276','23','matchRequest',10,'',0,'jimmy');
+INSERT INTO `notification` VALUES (1006,'333379007041276','5','matchRequest',10,'',0,'jimmy');
+INSERT INTO `notification` VALUES (1007,'333379007041276','5','matchRequest',10,'',0,'jimmy');
+INSERT INTO `notification` VALUES (1008,'333379007041276','44','matchRequest',10,'',0,'jimmy');
+INSERT INTO `notification` VALUES (1009,'333379007041276','337825819928904','comment',10,'photo4.jpg',0,'jkh sdf');
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -380,9 +211,9 @@ CREATE TABLE `photo` (
   `likefacebookid` text COMMENT 'the users that like this photo. seperate with "^".',
   `mycomment` text,
   `name` varchar(255) DEFAULT '',
-  `rate` int(11) DEFAULT '0',
+  `rate` float DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table photo
@@ -390,24 +221,28 @@ CREATE TABLE `photo` (
 
 LOCK TABLES `photo` WRITE;
 /*!40000 ALTER TABLE `photo` DISABLE KEYS */;
-INSERT INTO `photo` VALUES (41,'1','photo2.jpg',0,0,0,0,0,0,0,3,'YakYong Jong&who are you&333379007041276^YakYong Jong&very good.&333379007041276^YakYong Jong& another things.&333379007041276',1,'','this is my second comment','Alexsandria',0);
-INSERT INTO `photo` VALUES (42,'1','photo3.jpg',0,0,0,0,0,0,0,0,'',1,'','aboutphoto','Alexsandria',0);
-INSERT INTO `photo` VALUES (43,'337825819928904','photo4.jpg',0,0,0,0,0,0,0,1,'YakYong Jong&fgtrffhhjggghj&333379007041276',1,'333379007041276&YakYong Jong','this is my fourth comment','Alexsandria',0);
-INSERT INTO `photo` VALUES (44,'23','photo5.jpg',0,0,0,0,0,0,0,0,'',0,'','this is my fifth comment','Alexsandria',0);
-INSERT INTO `photo` VALUES (45,'23','photo6.jpg',0,0,0,0,0,0,0,0,'',0,'','this is my sixth comment','Alexsandria',0);
-INSERT INTO `photo` VALUES (99,'3','photo6.jpg',14,27,0,0,0,1,0,0,'',0,' ',' dok','Jane',0);
-INSERT INTO `photo` VALUES (100,'3','photo7.jpg',24,25,0,0,0,1,0,0,'',0,' ',' missing pot','Jane',0);
-INSERT INTO `photo` VALUES (101,'2','photo8.jpg',35,23,0,0,0,0,0,0,'',0,' ','probable','Jane',0);
-INSERT INTO `photo` VALUES (102,'2','photo2.jpg',37,22,0,0,0,0,0,0,'',0,'','Hello','Jane',0);
-INSERT INTO `photo` VALUES (119,'333379007041276','face4.png',0,0,0,0,0,0,0,0,'',0,'','Nice!','YakYong Jong',0);
-INSERT INTO `photo` VALUES (120,'333379007041276','face3.png',0,0,0,0,0,0,0,0,'',0,'','Glance!','YakYong Jong',0);
-INSERT INTO `photo` VALUES (121,'333379007041276','face2.png',0,0,0,0,0,0,0,0,'',1,'337825819928904&Sin Mi Rae','Glance!','YakYong Jong',0);
-INSERT INTO `photo` VALUES (122,'333379007041276','face1.png',0,0,0,0,0,0,0,0,'',0,'','See Me!','YakYong Jong',0);
-INSERT INTO `photo` VALUES (127,'44','photo3.jpg',73,11,0,0,0,0,0,0,'',0,'','hello','jim',7);
-INSERT INTO `photo` VALUES (128,'44','photo4.jpg',73,11,0,0,0,0,0,0,'',0,'','My Photo!','jim',7);
-INSERT INTO `photo` VALUES (148,'5','photo5.jpg',19,16,0,0,0,0,0,13,'YakYong Jong&aaaa&333379007041276^YakYong Jong&what&333379007041276^YakYong Jong&hello&333379007041276^YakYong Jong&Sorry&333379007041276^YakYong Jong&who&333379007041276^YakYong Jong&wheree&333379007041276^YakYong Jong&back&333379007041276^YakYong Jong&string&333379007041276^YakYong Jong&nine&333379007041276^YakYong Jong&ten&333379007041276^YakYong Jong&ten&333379007041276^YakYong Jong&12&333379007041276^YakYong Jong&I have simple problem&333379007041276',1,'333379007041276&YakYong Jong',' you a 333','Baddy',0);
-INSERT INTO `photo` VALUES (150,'5','photo2.jpg',19,16,0,0,0,0,0,0,'',0,'',' you a 333','Baddy',0);
-INSERT INTO `photo` VALUES (151,'333379007041276','cdfe450126df128def338b8ea9f661b8.jpg',0,0,0,0,0,0,0,0,'',0,'','Please write','YakYong Jong',0);
+INSERT INTO `photo` VALUES (41,'1','photo2.jpg',43,5,0,0,0,0,0,6,'jimmy&comment1&333379007041276^jimmy&comment2&333379007041276^jimmy&comment3&333379007041276^jimmy&comment4&333379007041276^jimmy&comment5&333379007041276^jimmy&comment6&333379007041276',0,'','this is my second comment','Jane',8.66667);
+INSERT INTO `photo` VALUES (42,'1','photo3.jpg',34,6,0,0,0,0,0,0,'',0,'','aboutphoto','Jane',5.678);
+INSERT INTO `photo` VALUES (43,'337825819928904','photo4.jpg',67,67,0,0,0,0,0,2,'jimmy&cccccc&333379007041276^jkh sdf&hell&333379007041276',1,'333379007041276&jimmy','In the pinic','simmon',1);
+INSERT INTO `photo` VALUES (44,'23','photo5.jpg',0,0,0,0,0,0,0,0,'',0,'','this is my fifth comment','Moppy',0);
+INSERT INTO `photo` VALUES (45,'23','photo6.jpg',0,0,0,0,0,0,0,0,'',0,'','this is my sixth comment','Moppy',0);
+INSERT INTO `photo` VALUES (99,'3','photo6.jpg',14,27,0,0,0,1,0,0,'',0,' ',' dok','Pumbba',0.45);
+INSERT INTO `photo` VALUES (100,'3','photo7.jpg',24,25,0,0,0,1,0,0,'',0,' ',' missing pot','Pumbba',1);
+INSERT INTO `photo` VALUES (101,'2','photo8.jpg',35,23,0,0,0,0,0,0,'',0,' ','probable','Alexandria',1.45345);
+INSERT INTO `photo` VALUES (102,'2','photo2.jpg',37,22,0,0,0,0,0,0,'',0,'','Hello','Alexandria',1.88889);
+INSERT INTO `photo` VALUES (119,'333379007041276','face4.png',12,2,0,0,0,0,0,3,'Sin Mi Rae&This is your photo&337825819928904^Sin Mi Rae&Good&337825819928904^Sin Mi Rae&Ok&337825819928904',1,'337825819928904&Sin Mi Rae','Hello','jimmy',6);
+INSERT INTO `photo` VALUES (120,'333379007041276','face3.png',23,3,0,0,0,0,0,1,'Sin Mi Rae&good&337825819928904',1,'337825819928904&Sin Mi Rae','Glance!','jimmy',7.0888);
+INSERT INTO `photo` VALUES (121,'333379007041276','face2.png',56,8,0,0,0,0,0,0,'',1,'337825819928904&Sin Mi Rae','Glance!','jimmy',4.78678);
+INSERT INTO `photo` VALUES (122,'333379007041276','face1.png',89,9,0,0,0,0,0,0,'',0,'','See Me!','jimmy',0.975676);
+INSERT INTO `photo` VALUES (127,'44','photo3.jpg',83,12,0,0,0,0,0,0,'',0,'','hello','Baddy',6.91667);
+INSERT INTO `photo` VALUES (148,'5','photo5.jpg',29,17,0,0,0,0,0,13,'YakYong Jong&aaaa&333379007041276^YakYong Jong&what&333379007041276^YakYong Jong&hello&333379007041276^YakYong Jong&Sorry&333379007041276^YakYong Jong&who&333379007041276^YakYong Jong&wheree&333379007041276^YakYong Jong&back&333379007041276^YakYong Jong&string&333379007041276^YakYong Jong&nine&333379007041276^YakYong Jong&ten&333379007041276^YakYong Jong&ten&333379007041276^YakYong Jong&12&333379007041276^YakYong Jong&I have simple problem&333379007041276',1,'333379007041276&YakYong Jong',' you a 333','Baddy',2);
+INSERT INTO `photo` VALUES (150,'5','photo2.jpg',28,17,0,0,0,0,0,0,'',0,'',' you a 333','Baddy',2);
+INSERT INTO `photo` VALUES (151,'333379007041276','cdfe450126df128def338b8ea9f661b8.jpg',12,5,0,0,0,0,0,0,'',0,'','Please write','jimmy',5.78678);
+INSERT INTO `photo` VALUES (152,'333379007041276','0558996a33d5c77dcf29ea5ae1e122b9.jpg',34,8,0,0,0,0,0,0,'',0,'','','jimmy',7.88889);
+INSERT INTO `photo` VALUES (153,'333379007041276','181650eaf16666e577ce0baa40a93752.jpg',89,56,0,0,0,0,0,0,'',0,'','','jimmy',4.11111);
+INSERT INTO `photo` VALUES (154,'333379007041276','3834e5cbea18e3134f0d4e3309bd1256.jpg',3,1,0,0,0,0,0,0,'',0,'','','jimmy',3);
+INSERT INTO `photo` VALUES (155,'333379007041276','12e7f9654518548f00bf15f4b3e7f439.jpg',24,12,0,0,0,0,0,0,'',0,'','','jimmy',2);
+INSERT INTO `photo` VALUES (156,'333379007041276','b531cc999688c822a5ee0cbbafe47537.jpg',111,16,0,0,0,0,0,1,'simmon&good&337825819928904',1,'337825819928904&simmon','Please write aboo.','jimmy',8.65335);
 /*!40000 ALTER TABLE `photo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -429,7 +264,7 @@ CREATE TABLE `users` (
   `locationx` float DEFAULT NULL,
   `locationy` float DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table users
@@ -444,7 +279,7 @@ INSERT INTO `users` VALUES (9,'3','Pumbba','dd','man',52,'0','photo6.jpg','fnbvg
 INSERT INTO `users` VALUES (10,'5','Baddy',' ','male',23,'0','photo5.jpg','gmail.com',0,0);
 INSERT INTO `users` VALUES (11,'44','Baddy',' ','male',23,'0','photo7.jpg','outlook.com',0,0);
 INSERT INTO `users` VALUES (12,'333379007041276','YakYong Jong',' ','male',18,'0','photo7.jpg','jyyblue1987@outlook.com',0,0);
-INSERT INTO `users` VALUES (13,'337825819928904','Sin Mi Rae',' ','female',18,'0','photo5.jpg','future.syg414@yahoo.com',0,0);
+INSERT INTO `users` VALUES (13,'337825819928904','simmon',' ','female',18,'0','photo5.jpg','future.syg414@yahoo.com',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
