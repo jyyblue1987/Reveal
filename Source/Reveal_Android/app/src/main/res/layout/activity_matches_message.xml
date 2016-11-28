@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <View android:id="@+id/statusBarBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        />
+    <include
+        android:id="@+id/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/statusBarBackground"
+        layout="@layout/header3" />
+    <!--android:layout_below="@+id/statusBarBackground"-->
+
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<android.support.v4.widget.DrawerLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/fragment_header"
+    android:paddingTop="-20dp"
+    android:background="#ffffff"
+    tools:openDrawer="start">
+
+    <!--android:fitsSystemWindows="true"-->
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+
+    <!--<View android:id="@+id/statusBarBackground"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
+
+
+    <RelativeLayout
+        android:id="@+id/lay_container"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        tools:context="com.reveal.Home">
+        <!--android:layout_below="@+id/fragment_header"-->
+
+       <TextView
+            android:id="@+id/nwmtchs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/newmtch"
+            android:textSize="20dp"
+           android:background="#ffffff"
+            android:paddingLeft="10dp"
+            android:textColor="@color/red"
+            android:paddingBottom="@dimen/activity_vertical_margin"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy"
+            android:layout_width="match_parent"
+            android:paddingLeft="5dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/nwmtchs"/>
+        <TextView
+            android:id="@+id/msgs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:layout_below="@id/recy"
+            android:text="@string/mesaages"
+            android:textSize="20dp"
+            android:textColor="@color/red"
+            android:paddingBottom="@dimen/activity_vertical_margin"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy2"
+            android:layout_width="match_parent"
+            android:paddingLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/msgs"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:indeterminateDrawable="@drawable/progress" >
+        </ProgressBar>
+
+    </RelativeLayout>
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:id="@+id/nav_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--app:itemIconTint="@color/red"-->
+        <!--app:itemTextColor="@color/red"-->
+        <!--app:headerLayout="@layout/nav_header_home"-->
+        <!--app:menu="@menu/activity_home2_drawer" />-->
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

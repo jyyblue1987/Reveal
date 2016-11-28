@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffffff"
+    android:layout_width  = "match_parent"
+    android:layout_height = "match_parent" >
+    <View android:id="@+id/statusBarBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <include
+        android:id="@+id/fragment_header"
+        android:layout_below="@+id/statusBarBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header3" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/fragment_header"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/full_image_view"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+        <TextView
+            android:id="@+id/imagetext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:textSize="20dip" />
+
+        <LinearLayout
+
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text = "Delete"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                android:textAllCaps="false"
+                android:background="@drawable/red_button"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_accept"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:padding="5dp"
+                android:layout_margin="10dp"
+                android:text = "Accept"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                android:textAllCaps="false"
+                android:background="@drawable/red_button"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:indeterminateDrawable="@drawable/progress" >
+    </ProgressBar>
+</RelativeLayout>

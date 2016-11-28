@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/transparent">
+
+    <LinearLayout
+        android:id="@+id/lay_container_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_post_notification"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Post Notification"
+        android:textSize="20sp"
+        android:background="@drawable/round_button"
+        android:textColor="#1645f1"
+        android:textAllCaps="false"
+        android:layout_marginBottom="-5dp"
+        />
+    <Button
+        android:id="@+id/btn_delete_friend"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:ems="15"
+        android:text="Delete Friend"
+        android:background="@drawable/round_button"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="#1645f1"
+        android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:text="Cancel"
+        android:background="@drawable/round_button"
+        android:textColor="#1645f1"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal"/>
+ </LinearLayout>

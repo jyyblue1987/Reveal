@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/lay_picker"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="#ac939090"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <RelativeLayout
+            android:id="@+id/lay_done"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/txt_cancel"
+                android:text="Date of Birth"
+                android:layout_centerHorizontal="true"
+                android:textSize="20dp"
+                android:textColor="@color/red"
+                android:padding="3dp"
+                android:background="@color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/txt_done"
+                android:text ="Done"
+                android:textSize="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/transparent"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:textColor="@color/red"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/lay_done"
+            android:id="@+id/lay_datapicker"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp" >
+
+            <com.dating.reveal.wheelview.WheelView android:id="@+id/month"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="3"/>
+
+            <com.dating.reveal.wheelview.WheelView android:id="@+id/day"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"/>
+            <com.dating.reveal.wheelview.WheelView android:id="@+id/year"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+

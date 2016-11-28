@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:background="#ffffff"
+    android:paddingTop="0dp"
+    >
+            <ImageView
+                android:id="@+id/tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chat_tip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                />
+            <TextView
+                android:id="@+id/textName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tip"
+                android:background="@drawable/chat_item_left"
+                android:layout_marginLeft="-3dp"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:padding="5dp"
+                android:text="alkdjf"
+                />
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/lay_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:background="#ddddff">-->
+                    <!--<ImageView-->
+                        <!--android:id="@+id/img_play"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:visibility="gone"-->
+                        <!--android:src="@drawable/triangle"-->
+                        <!--android:layout_toRightOf="@+id/textMsg"-->
+                        <!--android:layout_centerVertical="true"/>-->
+                    <!--<ImageView-->
+                        <!--android:id="@+id/img_stop"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:src="@drawable/square"-->
+                        <!--android:visibility="gone"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_toRightOf="@+id/textMsg"/>-->
+                <!--<TextView-->
+                    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+                    <!--xmlns:emojicon="http://schemas.android.com/apk/res-auto"-->
+                    <!--android:id="@+id/textMsg"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="20dp"-->
+                    <!--android:background="#ddddff"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:textColor="@color/light_black"-->
+                    <!--android:text="Congraltion"-->
+                    <!--/>-->
+            <!--</RelativeLayout>-->
+            <!--<TextView-->
+                <!--android:id="@+id/textName"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/light_blue"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:text="user name:"-->
+                <!--android:visibility="gone"-->
+                <!--android:layout_below="@+id/lay_content"-->
+                <!--/>-->
+
+            <!--<github.ankushsachdeva.emojicon.EmojiconTextView -->
+
+            <!--emojicon:emojiconSize="28sp"-->
+
+</RelativeLayout>

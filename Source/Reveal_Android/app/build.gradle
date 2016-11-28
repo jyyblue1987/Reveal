@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        applicationId "com.dating.reveal"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+    }
+    dexOptions {
+        //  incremental true
+        javaMaxHeapSize "2g"
+    }
+    useLibrary 'org.apache.http.legacy'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.crystal:crystalrangeseekbar:1.1.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'io.apptik.widget:multislider:1.2'
+    compile 'com.android.support:recyclerview-v7:24.0.0'
+    compile 'com.android.support:cardview-v7:24.0.0'
+    compile 'com.android.support:support-v4:24.0.0'
+    compile 'com.android.support:support-v13:24.0.0'
+    compile 'com.android.support:design:24.0.0'
+//    compile 'com.mikepenz:actionitembadge:3.3.0@aar'
+//    compile files('libs/universal-image-loader-1.9.0.jar')
+//    compile 'org.apache.httpcomponents:httpmime:4.2.3'
+//    compile 'org.igniterealtime.smack:smack-java7:4.1.0-rc1'
+    compile 'org.igniterealtime.smack:smack-tcp:4.1.0-rc1'
+    compile 'org.igniterealtime.smack:smack-im:4.1.0-rc1'
+    compile 'org.igniterealtime.smack:smack-extensions:4.1.0-rc1'
+    compile files('libs/umeng-analytics-v5.6.4.jar')
+    compile('io.socket:socket.io-client:0.8.1') {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    compile 'com.koushikdutta.ion:ion:2.+'
+    compile files('libs/commons-io-2.4.jar')
+    compile files('libs/nodemedia-client-v0.9.5.jar')
+    compile 'com.jakewharton:butterknife:8.4.0'
+   compile files('libs/atv-1.2.0-sources.jar')
+    compile 'com.github.johnkil.print:print:1.3.1'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:recyclerview-v7:24.0.+'
+    compile 'org.apache.httpcomponents:httpmime:4.2.3'
+
+    // Android SDK
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
+    // Audience Network SDK. Only versions 4.6.0 and above are available
+    compile 'com.facebook.android:audience-network-sdk:4.+'
+    // Account Kit
+    compile 'com.facebook.android:account-kit-sdk:4.+'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    // switch button library
+    compile 'com.kyleduo.switchbutton:library:1.4.4'
+}

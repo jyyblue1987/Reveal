@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <View android:id="@+id/statusBarBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <include
+        android:id="@+id/fragment_header"
+        android:layout_below="@+id/statusBarBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txt_report"
+            android:text="Report User for:"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="@color/light_black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:id="@+id/radioSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radio_group_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/red"
+                android:paddingBottom="15dp"
+                android:background="@drawable/hidden_radiobutton"
+                android:button="@android:color/transparent"
+                android:text="Block without reporting"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/radio_off_material"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#111111"
+                android:paddingBottom="15dp"
+                android:background="@drawable/hidden_radiobutton"
+                android:button="@android:color/transparent"
+                android:layout_height="wrap_content"
+                android:text="Feels Like Spam" />
+            <RadioButton
+                android:id="@+id/radio_not_actual"
+                android:textSize="20dp"
+                android:textColor="#111111"
+                android:paddingBottom="15dp"
+                android:background="@drawable/hidden_radiobutton"
+                android:button="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inappropriate Messages" />
+            <RadioButton
+                android:id="@+id/radio_wrong_gender"
+                android:textSize="20dp"
+                android:textColor="#111111"
+                android:paddingBottom="15dp"
+                android:background="@drawable/hidden_radiobutton"
+                android:button="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bad Offline Behavior" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_height="40dp"
+            android:text="Confirm"
+            android:textColor="#ffffff"
+            android:background="@drawable/red_button"/>
+    </LinearLayout>
+</LinearLayout>

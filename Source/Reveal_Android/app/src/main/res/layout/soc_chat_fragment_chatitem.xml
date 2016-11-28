@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dp"
+	    android:orientation="horizontal" 
+	    android:layout_marginTop="2dp"
+	    android:layout_marginBottom="2dp"
+	    android:background="@drawable/chatitem_bg" 
+        >
+
+	    <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@color/transparent" 
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="5dp"  
+	        android:gravity="center_vertical"
+	        android:orientation="horizontal"       
+	        >
+	<!-- 
+	        <TextView
+	            android:id="@+id/textNum"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:textSize="10sp"
+	            android:paddingLeft="6dp"
+	            android:paddingRight="6dp"
+	            android:background="@drawable/chatnum_bg"
+	            android:text="10" 
+	            android:visibility="gone"/>
+	-->        
+	        <TextView
+	            android:id="@+id/textName"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:textSize="12dp"
+	            android:textStyle="bold"
+	            android:textColor="@color/light_blue"
+	            android:text="user name:" />        
+	        
+	        <!--<github.ankushsachdeva.emojicon.EmojiconTextView -->
+			<TextView
+		        xmlns:android="http://schemas.android.com/apk/res/android"
+			    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+			    android:id="@+id/textMsg"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:layout_marginRight="10dp"
+	            android:textSize="12dp"
+	            android:textColor="@color/light_black"
+			    android:text="Congratelation. Please..."
+			    />
+			<!--emojicon:emojiconSize="28sp"-->
+
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>
