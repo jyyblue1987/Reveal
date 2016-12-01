@@ -23,7 +23,7 @@ exports.addfriend = function(req, res) {
 
     if(request == "requestfriend"){
         // add notification about this message
-        var sendtime = "10";// new Date.toString();
+        var sendtime = new Date.toString();
         var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval,sender_name) VALUES ('" +
             sendfacebookid + "', '"+ facebookid +"', 'requestfriend', '" + sendtime +"', '" + "" + "', '" + sender_name + "')";
         global.mysql.query(newfeedquery, function(err, newresult){
@@ -72,6 +72,7 @@ exports.addfriend = function(req, res) {
                 }else{
 
                     // insert added friend notification
+                    var sendtime = new Date().toString();
                     var added1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" + facebookid + "', '"+sendfacebookid +
                         "', 'acceptfriend', '"  +sendtime+ "', '" + "" + "', '" + sender_name + "')";
                     var added2 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" + sendfacebookid + "', '"+facebookid   +
@@ -117,9 +118,9 @@ exports.addfriend = function(req, res) {
         });
 
     }else if(request=="friendadd"){ // request to be friend with you. // add notification table.
-
+        var sendtime = new Date().toString();
         var query = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
-            + sendfacebookid + "', '" + facebookid + "', 'friendadd', '10', '" + "" + "', '" + sender_name + "')";
+            + sendfacebookid + "', '" + facebookid + "', 'friendadd', '" + sendtime + "', '" + "" + "', '" + sender_name + "')";
         global.mysql.query(query, function(err, result){
             var data1 = {};
             var ret = {};
@@ -138,8 +139,9 @@ exports.addfriend = function(req, res) {
             res.send(200, data);
         });
     }else if(request == "friendaccept"){ // if someone accept the friend request
+        var sendtime = new Date().toString();
         var queryadd = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
-            + sendfacebookid + "', '" + facebookid + "', 'friendaccept', '10', '" + "" +"', '" + sender_name + "')";
+            + sendfacebookid + "', '" + facebookid + "', 'friendaccept', '"+sendtime+"', '" + "" +"', '" + sender_name + "')";
             // add notification table as the receivers notification
         global.mysql.query(queryadd, function(err, result){
             if(err){

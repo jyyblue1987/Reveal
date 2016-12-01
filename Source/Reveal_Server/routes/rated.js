@@ -77,7 +77,7 @@ exports.rated = function(req, res){
                 // check response match request
                 if(responsematchrequest == ""){
                     // this is match request
-                    var sendtime = 10;
+                    var sendtime = new Date().toString();
                     var notiquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
                         sendfacebookid + "', '"+ facebookid +"', 'matchRequest', '" + sendtime +"', '', '" + sender_name + "')";
                     global.mysql.query(notiquery, function(err, noresult){
@@ -109,10 +109,11 @@ exports.rated = function(req, res){
                     });
 
                     // insert new match notification to notification table.
+                    var sendtime = new Date().toString();
                     var newmatch1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
-                        sendfacebookid + "', '"+ facebookid +"', 'newmatch', '10', '', '" + sender_name + "')";
+                        sendfacebookid + "', '"+ facebookid +"', 'newmatch', '"+sendtime+"', '', '" + sender_name + "')";
                     var newmatch2 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
-                        facebookid + "', '"+ sendfacebookid +"', 'newmatch', '10', '', '" + name1 + "')";
+                        facebookid + "', '"+ sendfacebookid +"', 'newmatch', '"+sendtime+"', '', '" + name1 + "')";
                     global.mysql.query(newmatch1, function(err, result1){});
                     global.mysql.query(newmatch2, function(err, result2){});
                 }else //if(responsematchrequest == "refuse")

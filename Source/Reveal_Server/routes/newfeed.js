@@ -49,9 +49,9 @@ exports.newfeed = function(req, res){
             if(rows2.length>0){
                 for(var i=0; i<rows2.length; i++){
                     friend1 = rows2[i].facebookid2;
-                    var sendtime = 11;
-                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
-                        facebookid + "', '"+ friend1 +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "')";
+                    var sendtime = new Date().toString();
+                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name, state) VALUES ('" +
+                        facebookid + "', '"+ friend1 +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "', '0')";
                     global.mysql.query(newfeedquery, function(err, newresult){
                         if(err){
 
@@ -97,8 +97,8 @@ exports.newfeed = function(req, res){
                     var sendtime = 11;
                     friend2 = rows3[x].facebookid1;
                     var sendtime = new Date().toString();
-                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
-                        facebookid + "', '"+ friend2 +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "')";
+                    var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name, state) VALUES ('" +
+                        facebookid + "', '"+ friend2 +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "', '0')";
                     global.mysql.query(newfeedquery, function(err, newresult){
                         if(err){
 
@@ -128,8 +128,8 @@ exports.newfeed = function(req, res){
             }
             if(result.length > 0){
                 var sendtime = new Date().toString();
-                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" +
-                    facebookid + "', '"+ group +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "')";
+                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name, state) VALUES ('" +
+                    facebookid + "', '"+ group +"', 'newfeed', '" + sendtime +"', '" + photopath +"', '" + sender_name + "', '0')";
                 global.mysql.query(newfeedquery, function(err, newresult){
                    if(err){
 
@@ -146,8 +146,8 @@ exports.newfeed = function(req, res){
             }
             if(result.length > 0) {
                 var sendtime = new Date().toString();
-                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval,sender_name) VALUES ('" +
-                    facebookid + "', '" + group + "', 'newfeed', '" + sendtime + "', '" + photopath + "', '" + sender_name + "')";
+                var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval,sender_name, state) VALUES ('" +
+                    facebookid + "', '" + group + "', 'newfeed', '" + sendtime + "', '" + photopath + "', '" + sender_name + "', '0')";
                 global.mysql.query(newfeedquery, function (err, newresult) {
                     if (err) {
 

@@ -14,38 +14,6 @@ exports.uploadphoto = function(req, res){
     // VALUES ('a', 'g', 'matchRequest', '0')
     fs.renameSync(req.file.path, req.file.path + ".jpg");
 
-
-    // first to see if there is profile photo in the user info.
-    var profilequery ="SELECT * FROM users WHERE facebookid='" + facebookid +"'";
-    global.mysql.query(profilequery, function(err, profileresult){
-        if(err){
-
-        }
-        var profilephoto = profileresult[0].profilephoto;
-        if(profilephoto == ""){ // this value,  "" is init profile photo value. you must check the init value of profile photo path.
-            // if there is no profile photo then update users table.
-            var updateprofilephoto = "UPDATE users SET profilephoto='"+ photopath
-                +"' WHERE facebookid='"+facebookid +"'";
-            global.mysql.query(updateprofilephoto, function(err, updateuserprofilephoto){
-                if(err){
-                    // you must send update profile photo fail error_msg.
-                    var data = {};
-                    data.retcode = 222;
-                    data.error_msg = "Sorry. Add Profile Photo Failed. Please Try again.";
-                    //res.json(data);
-                    return res.send(200,data);
-
-                }
-                var data = {};
-                data.retcode = 200;
-                return res.send(200,data);
-
-
-            });
-        }
-    });
-
-
     var query = "INSERT INTO photo (facebookid, photopath, ratesum, ratenumber, reportgp,"+
         "reportom, reportnap, reportwg, reportfls, commentnum,"+
         " commentcon, likenum, likefacebookid,"+

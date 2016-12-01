@@ -9,11 +9,14 @@ exports.readnotification = function(req, res) {
     var destination =  req.body.destination;
     var notekind =  req.body.notekind;
     var feedval =  req.body.feedval;
+    var sendtime = req.body.sendtime;
+    var id = req.body.Id;
     var state = 1;
 
     //update notification set state='1' where sender='333379007041276' and destination='1' and  notekind='requestfriend' and  state='0'
-    var query =" UPDATE notification SET state = '1' WHERE sender='" + sender + "' AND destination='" +
-        destination +"' AND notekind='" + notekind + "' AND feedval ='"+feedval + "' AND state='0'";
+    var query =" UPDATE notification SET state = '1' WHERE sender='" + sender +
+        "' AND destination='" + destination +
+        "' AND Id='"+id+"'";
     global.mysql.query(query, function (err, result){
         if(err){
             var data={};

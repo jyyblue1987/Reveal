@@ -68,8 +68,9 @@ exports.commentlike = function(req, res) {
                     ////res.json(data);
                     //return res.send(200,data);
                 });
+                var sendtime = new Date().toString();
                 var aaa = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
-                    + sendfacebookid + "', '" + facebookid + "', 'like', '10' , '" + photopath + "', '" + sendname + "')";
+                    + sendfacebookid + "', '" + facebookid + "', 'like', '"+sendtime+"' , '" + photopath + "', '" + sendname + "')";
                 global.mysql.query(aaa, function(err, result){
 
                     if(err){
@@ -116,8 +117,9 @@ exports.commentlike = function(req, res) {
                     if(err){
 
                     }
+                    var sendtime = new Date().toString();
                     var notequery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
-                        + sendfacebookid + "', '" + facebookid + "', 'comment', '10', '" + photopath + "', '" + sendname + "')";
+                        + sendfacebookid + "', '" + facebookid + "', 'comment', '" + sendtime + "', '" + photopath + "', '" + sendname + "')";
                     global.mysql.query(notequery, function(err, result){
                         if(err){
 

