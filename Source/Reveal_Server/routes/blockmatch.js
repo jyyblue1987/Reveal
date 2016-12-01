@@ -9,6 +9,11 @@ exports.blockmatch = function(req, res) {
     var blockfacebookid = req.body.blockfacebookid;
     var blocksort = req.body.blocksort;
     var query = "INSERT INTO block (sender, blockfacebookid, blocksort) VALUES ('" + facebookid + "', '" + blockfacebookid + "', '" + blocksort + "')";
+    var query1 = "DELETE from matching where (facebookid1='"+facebookid+"' and facebookid2='"+blockfacebookid+"')"+
+                                      " or (facebookid1='"+blockfacebookid+"' and facebookid2='"+facebookid+"')";
+    global.mysql.query(query1, function (err, result) {
+
+    });
     global.mysql.query(query, function(err, result){
         if(err){
             var data = {};

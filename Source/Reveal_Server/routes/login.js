@@ -215,7 +215,7 @@ getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid, fi
             }
             searchIn = searchIn + "'" + rows[rows.length-1].facebookid + "'"
 
-            var query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +")";
+            var query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +")"
             global.mysql.query(query, function(err, result){
                 if(err){
 

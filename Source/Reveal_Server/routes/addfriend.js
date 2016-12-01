@@ -46,14 +46,14 @@ exports.addfriend = function(req, res) {
 
            }
             // delete the match
-            var deletematch1 = "DELETE FROM matching WHERE facebookid1='" + facebookid +"' AND facebookid2='" + sendfacebookid +"'"
-            global.mysql.query(deletematch1, function(er,result){
-                console.log(result);
-            });
-            var deletematch2 = "DELETE FROM matching WHERE facebookid1='" + sendfacebookid +"' AND facebookid2='" +facebookid  +"'"
-            global.mysql.query(deletematch2, function(er,result){
-                console.log(result);
-            });
+            //var deletematch1 = "DELETE FROM matching WHERE facebookid1='" + facebookid +"' AND facebookid2='" + sendfacebookid +"'"
+            //global.mysql.query(deletematch1, function(er,result){
+            //    console.log(result);
+            //});
+            //var deletematch2 = "DELETE FROM matching WHERE facebookid1='" + sendfacebookid +"' AND facebookid2='" +facebookid  +"'"
+            //global.mysql.query(deletematch2, function(er,result){
+            //    console.log(result);
+            //});
             // see if there is friend with the same facebookid.
             var samequery = "SELECT facebookid1 FROM friend  WHERE facebookid1='" + facebookid + "' AND facebookid2='" + sendfacebookid
                 + "' OR facebookid1='" + sendfacebookid + "' AND facebookid2='" + facebookid + "'" ;
@@ -65,7 +65,7 @@ exports.addfriend = function(req, res) {
                     // already exist
                     var data = {};
                     data.retcode=203
-                    data.error_msg = "already is friend of you."
+                    data.error_msg = "Already is friend of you."
                     data.content = "";
                     res.send(200, data);
 

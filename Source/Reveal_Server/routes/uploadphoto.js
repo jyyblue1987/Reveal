@@ -36,6 +36,11 @@ exports.uploadphoto = function(req, res){
                     return res.send(200,data);
 
                 }
+                var data = {};
+                data.retcode = 200;
+                return res.send(200,data);
+
+
             });
         }
     });
