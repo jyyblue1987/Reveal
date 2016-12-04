@@ -26,6 +26,10 @@ exports.commentlike = function(req, res) {
         var photoquery = "SELECT * FROM photo WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
         global.mysql.query(photoquery, function(err, photoresult){
             if(err){
+                var data = {};
+                data.retcode = 300;
+                data.error_msg = "server error.";
+                return res.send(200,data);
 
             }
             if(photoresult.length > 0){
@@ -74,15 +78,26 @@ exports.commentlike = function(req, res) {
                 global.mysql.query(aaa, function(err, result){
 
                     if(err){
+                        console.log(aaa);
+                        var data = {};
+                        data.retcode = 300;
+                        data.error_msg = "server error";
+                        return res.send(200,data);
 
                     }
-                    //console.log(aaa);
-                    //var data = {};
-                    //data.retcode = 200;
-                    //data.error_msg = "";
-                    ////res.json(data);
-                    //return res.send(200,data);
+                    console.log(aaa);
+                    var data = {};
+                    data.retcode = 200;
+                    data.error_msg = "";
+                    //res.json(data);
+                    return res.send(200,data);
                 })
+            }else{
+                var data = {};
+                data.retcode = 200;
+                data.error_msg = "there is no photo";
+                return res.send(200,data);
+
             }
         });
     }else{
@@ -91,6 +106,12 @@ exports.commentlike = function(req, res) {
         var photoquery = "SELECT * FROM photo WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
         global.mysql.query(photoquery, function(err, photoresult){
             if(err){
+                console.log(commentquery);
+                var data = {};
+                data.retcode = 200;
+                data.error_msg = "";
+                //res.json(data);
+                return res.send(200,data);
 
             }
             if(photoresult.length > 0){
@@ -115,6 +136,12 @@ exports.commentlike = function(req, res) {
                     +"' WHERE facebookid='"+facebookid +"' AND photopath='"+ photopath +"'";
                 global.mysql.query(commentquery, function(err, uppresult){
                     if(err){
+                        console.log(commentquery);
+                        var data = {};
+                        data.retcode = 200;
+                        data.error_msg = "";
+                        //res.json(data);
+                        return res.send(200,data);
 
                     }
                     var sendtime = new Date().toString();
@@ -122,6 +149,12 @@ exports.commentlike = function(req, res) {
                         + sendfacebookid + "', '" + facebookid + "', 'comment', '" + sendtime + "', '" + photopath + "', '" + sendname + "')";
                     global.mysql.query(notequery, function(err, result){
                         if(err){
+                            console.log(commentquery);
+                            var data = {};
+                            data.retcode = 200;
+                            data.error_msg = "";
+                            //res.json(data);
+                            return res.send(200,data);
 
                         }
 

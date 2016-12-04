@@ -34,7 +34,12 @@ var blockmatch = require('./routes/blockmatch');
 var checkblock = require('./routes/checkblock');
 var getnotification = require('./routes/getnotification');
 var gettotalrate = require('./routes/gettotalrate');
+var deletephoto = require('./routes/deletephoto');
+var isphoto = require('./routes/isphoto');
 
+
+
+//var rate   = require('./routes/rate');
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 var app = express();
@@ -87,7 +92,10 @@ app.post('/routes/blockmatch',blockmatch.blockmatch);
 app.post('/routes/checkblock', checkblock.checkblock);
 app.post('/routes/getnotification',getnotification.getnotification);
 app.post('/routes/gettotalrate', gettotalrate.gettotalrate);
-
+//app.post('/routes/rate', rate.rate);
+app.post('/routes/downloadphoto',downloadphoto.downloadphoto);
+app.post('/routes/deletephoto',deletephoto.deletephoto);
+app.post('/routes/isphoto',isphoto.isphoto);
 
 //app.get('/routes/deletefriend',deletefriend.deletefriend);
 //app.get('/personinfo', personinfo.personinfo);
@@ -104,7 +112,7 @@ app.post('/routes/gettotalrate', gettotalrate.gettotalrate);
 app.get('/chat', chat.chat);
 
 
-app.post('routes/downloadphoto',downloadphoto.downloadphoto);
+
 //app.post('/routes/uploadphoto',uploadphoto.uploadphoto);
 
 var multer = require('multer');

@@ -28,7 +28,7 @@ exports.friendprofile = function(req, res) {
         }
 
         if (rows2.length > 0 ) {
-            var newfeedquery = "SELECT * FROM photo WHERE facebookid='" + facebookid + "'";
+            var newfeedquery = "SELECT * FROM photo WHERE facebookid='" + facebookid + "' ORDER BY Id DESC";
             global.mysql.query(newfeedquery, function (err, newresult) {
                 if (err) {
                     //res.send(200, "database error");

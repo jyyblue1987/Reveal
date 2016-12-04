@@ -13,7 +13,7 @@ exports.myprofile = function(req, res){
 
     // if they are not match and friends.
 
-    var photoquery = "SELECT * FROM photo WHERE facebookid='" + facebookid + "'";
+    var photoquery = "SELECT * FROM photo WHERE facebookid='" + facebookid + "' ORDER BY Id DESC";
     global.mysql.query(photoquery, function (err, result) {
         if (err) {
             var data = {};
@@ -49,7 +49,7 @@ exports.myprofile_post = function(req, res){
 
     // if get user's registerd information in user table.
 
-    var photoquery = "SELECT * FROM photo WHERE facebookid='" + facebookid + "'";
+    var photoquery = "SELECT * FROM photo WHERE facebookid='" + facebookid +"' ORDER BY Id DESC";
     global.mysql.query(photoquery, function (err, result) {
         if (err) {
             var data = {};

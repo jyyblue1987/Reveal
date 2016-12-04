@@ -56,19 +56,6 @@ exports.newfeed = function(req, res){
                         if(err){
 
                         }
-                        var data1 = {};
-                        var ret = {};
-                        ret.sender = facebookid;
-                        ret.destination = friend1;
-                        ret.notekind = "newfeed";
-                        ret.feedval = photopath;
-                        data1.retcode = 234;
-                        data1.error_msg = "";
-                        data1.content = ret;
-                        global.io.sockets.in(friend1).emit("notification", data1);
-
-
-                        console.log(newfeedquery);
                     });
                 }
             }
@@ -103,7 +90,6 @@ exports.newfeed = function(req, res){
                         if(err){
 
                         }
-                        console.log(newfeedquery);
                     });
                 }
             }

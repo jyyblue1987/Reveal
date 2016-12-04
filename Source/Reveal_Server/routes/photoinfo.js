@@ -21,6 +21,12 @@ exports.photoinfo  = function(req, res){
             data.error_msg = "";
             data.content = result;
             return res.send(200,data);
+        }else{
+            data = {};
+            data.retcode = 300;
+            data.error_msg = "there is no photo";
+            return res.send(200,data);
         }
+
     });
 }

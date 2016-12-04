@@ -3,7 +3,7 @@
  */
 
 url = require('url');
-exports.rated = function(req, res){
+exports.rate = function(req, res){
     console.log(req);
     var url_parts = url.parse(req.url,true);
     //var
@@ -73,39 +73,38 @@ exports.rated = function(req, res){
 
                     var query1 = "SELECT * FROM rate WHERE sender='"+facebookid+"' AND receiver='"+sendfacebookid+"'";
                     global.mysql.query(query1, function(err, result){
-                            if(err){
-                                var data1 = {};
-                                data1.retcode = 300;
-                                data1.error_msg = "Could not find such photo.";
-                                res.send(200, data1);  // end point
-                            }
-                            if(result.length > 0){ // if there is someone rate your photo // insert new match notifciation
-                                var newmatch1  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"+
-                                    +sendfacebookid+"', '"+facebookid+"', '"+sender_name+"','newmatch','0')";
-                                var newmatch2  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"+
-                                    +facebookid+"', '"+sendfacebookid+"', '"+name1+"','newmatch','0')";
-                                var newmatch3 = "INSERT INTO matching (facebookid1, facebookid2, name1, name2) VALUES ('"
-                                    +sendfacebookid+"', '"+ facebookid + "', '" + sender_name + "','" + name1 + "')"
-                                global.mysql.query(newmatch3, function(err, result3){
-                                    if(err){
-                                        var data={};
-                                        data.retcode = 300;
-                                        data.error_msg = "sql_error";
-                                        res.send(200, data);
-                                    }
+                        if(err){
+                            var data1 = {};
+                            data1.retcode = 300;
+                            data1.error_msg = "Could not find such photo.";
+                            res.send(200, data1);  // end point
+                        }
+                        if(result.length > 0){ // if there is someone rate your photo // insert new match notifciation
+                            var newmatch1  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"+
+                                +sendfacebookid+"', '"+facebookid+"', '"+sender_name+"','newmatch','0')";
+                            var newmatch2  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"+
+                                +facebookid+"', '"+sendfacebookid+"', '"+name1+"','newmatch','0')";
+                            var newmatch3 = "INSERT INTO matching (facebookid1, facebookid2, name1, name2) VALUES ('"
+                                +sendfacebookid+"', '"+ facebookid + "', '" + sender_name + "','" + name1 + "')"
+                            global.mysql.query(newmatch3, function(err, result3){
+                                if(err){
                                     var data={};
-                                    data.retcode = 200;
+                                    data.retcode = 300;
+                                    data.error_msg = "sql_error";
                                     res.send(200, data);
-                                });
-                                global.mysql.query(newmatch1,function(err,result){          });
-                                global.mysql.query(newmatch2,function(err,rewult2){         });
-                            }else{
+                                }
                                 var data={};
                                 data.retcode = 200;
                                 res.send(200, data);
-                            }
+                            });
+                            global.mysql.query(newmatch1,function(err,result){          });
+                            global.mysql.query(newmatch2,function(err,rewult2){         });
                         }
-                    );
+                        var data={};
+                        data.retcode = 200;
+                        res.send(200, data);
+                    }
+                );
                 }else{ // rate not to match to that photo.
                     var query2 = "INSERT INTO rate (sender, receiver, send_name, receiver_name, kind) VALUES ('"+sendfacebookid+
                         "', '"+facebookid+"', '"+sender_name+"', '"+name1+"','refuse')";
@@ -138,5 +137,5 @@ exports.rated = function(req, res){
 
         }
 
-    });
+        });
 }

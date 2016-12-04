@@ -14,6 +14,8 @@ exports.uploadphoto = function(req, res){
     // VALUES ('a', 'g', 'matchRequest', '0')
     fs.renameSync(req.file.path, req.file.path + ".jpg");
 
+    var queryprofile = "UPDATE users SET profilephoto='"+photopath+"' WHERE facebookid='"+facebookid+"'";
+    global.mysql.query(queryprofile, function(err, resultprofile){});
     var query = "INSERT INTO photo (facebookid, photopath, ratesum, ratenumber, reportgp,"+
         "reportom, reportnap, reportwg, reportfls, commentnum,"+
         " commentcon, likenum, likefacebookid,"+
@@ -28,7 +30,6 @@ exports.uploadphoto = function(req, res){
             data.retcode = 300;
             data.error_msg ="sql server error";
             return res.send(200,data);
-
         }
         var data ={};
         data.retcode = 200;

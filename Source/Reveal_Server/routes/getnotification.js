@@ -6,19 +6,38 @@ exports.getnotification = function(req, res) {
     console.log(req);
     //var url_parts = url.parse(req.url, true);
     var facebookid = req.body.facebookid;
+    var queryprofile = "SELECT profilephoto FROM users WHERE facebookid='"+facebookid+"'";
+
     var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "' AND state='0'";
-    global.mysql.query(notequery, function (err, result) {
-        var data = {};
-
-        if (err) {
-            data.retcode = 300;
-            data.error_msg = "sql error";
-            return res.send(200, data);
-
+    global.mysql.query(queryprofile, function(err, resultpro){
+        var profile;
+        if(err){
+            profile = "";
+        }else{
+            if(resultpro.length == 0){
+                profile = "";
+            }else{
+                profile = resultpro[0].profilephoto;
+            }
         }
-        data.retcode = 200;
-        data.error_msg = "";
-        data.content = result;
-        return res.send(200, data);
+
+        global.mysql.query(notequery, function (err, result) {
+            var data = {};
+
+            if (err) {
+                data.retcode = 300;
+                data.profile = profile;
+                data.error_msg = "sql error";
+                return res.send(200, data);
+
+            }
+            data.retcode = 200;
+            data.error_msg = "";
+            data.profile = profile;
+            data.content = result;
+            return res.send(200, data);
+        });
     });
+
+
 }
