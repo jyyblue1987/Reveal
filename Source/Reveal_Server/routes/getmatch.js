@@ -11,7 +11,15 @@ exports.getmatch = function(req, res){
     var facebookid = req.body.facebookid;
 
     var query_1 = "SELECT * FROM matching WHERE facebookid1='"+facebookid+"' OR facebookid2='"+facebookid+"'";
-    global.mysql.query(query_1, function(err, result){
+    var query_2 = "SELECT * FROM matching " +
+        "LEFT JOIN users " +
+        " ON matching.facebookid1 = users.facebookid" +
+        " OR matching.`facebookid2` = users.`facebookid` " +
+        "WHERE facebookid1 = '"+facebookid+"'" +
+        " AND facebookid NOT IN('"+facebookid+"')" +
+        " OR  facebookid2 = '"+facebookid+"'" +
+        "AND facebookid NOT IN ('"+facebookid+"')";
+    global.mysql.query(query_2, function(err, result){
         if(err){
             var data = {};
             data.retcode = 300;

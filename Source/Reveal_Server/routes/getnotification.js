@@ -9,6 +9,14 @@ exports.getnotification = function(req, res) {
     var queryprofile = "SELECT profilephoto FROM users WHERE facebookid='"+facebookid+"'";
 
     var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "' AND state='0'";
+
+    var notequery2 = "SELECT * FROM " +
+        "notification LEFT JOIN users " +
+        " ON notification.sender = users.facebookid" +
+        " OR notification.destination = users.`facebookid`" +
+        " WHERE destination = '"+facebookid+"'" +
+        " AND facebookid NOT IN('"+facebookid+"')" +
+        "AND state =0";
     global.mysql.query(queryprofile, function(err, resultpro){
         var profile;
         if(err){
@@ -21,7 +29,7 @@ exports.getnotification = function(req, res) {
             }
         }
 
-        global.mysql.query(notequery, function (err, result) {
+        global.mysql.query(notequery2, function (err, result) {
             var data = {};
 
             if (err) {

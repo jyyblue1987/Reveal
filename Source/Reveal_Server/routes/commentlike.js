@@ -18,6 +18,7 @@ exports.commentlike = function(req, res) {
     var like            = req.body.like;
     var comment         = req.body.comment;
     var sendname        = req.body.sendname;
+    var profilephoto    = req.body.profilephoto;
 
     // if sender like the photo then upgrade like with the sender's facebookid
     // in photo table.
@@ -56,7 +57,7 @@ exports.commentlike = function(req, res) {
 
 
                     }else{ // if sendfacebookid does not like this photo before then append this like message.
-                        likefacebookid = likefacebookid + "^" + sendfacebookid +"&" + sendname;
+                        likefacebookid = likefacebookid + "^" + sendfacebookid +"&" + sendname + "&" + profilephoto;
                     }
                 }
                 // update the photo column.(table)
@@ -124,9 +125,9 @@ exports.commentlike = function(req, res) {
                 }
                 var commentcon = photoresult[0].commentcon;
                 if(commentcon == null || commentcon == ""){
-                    commentcon =sendname + "&" +  comment + "&" + sendfacebookid;
+                    commentcon =sendname + "&" +  comment + "&" + sendfacebookid + "&" + profilephoto;
                 }else {
-                    commentcon = commentcon + "^" + sendname + "&" +  comment + "&" + sendfacebookid;
+                    commentcon = commentcon + "^" + sendname + "&" +  comment + "&" + sendfacebookid+ "&" + profilephoto;
                 }
                 // insert comment notification in notification table.
 //              INSERT INTO notification (sender, destination, notekind, sendtime) VALUES ('a', 'g', 'matchRequest', '0')
@@ -144,11 +145,22 @@ exports.commentlike = function(req, res) {
                         return res.send(200,data);
 
                     }
-                    var sendtime = new Date().toString();
-                    var notequery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
-                        + sendfacebookid + "', '" + facebookid + "', 'comment', '" + sendtime + "', '" + photopath + "', '" + sendname + "')";
-                    global.mysql.query(notequery, function(err, result){
-                        if(err){
+
+                    if(facebookid != sendfacebookid){
+                        var sendtime = new Date().toString();
+                        var notequery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('"
+                            + sendfacebookid + "', '" + facebookid + "', 'comment', '" + sendtime + "', '" + photopath + "', '" + sendname + "')";
+                        global.mysql.query(notequery, function(err, result){
+                            if(err){
+                                console.log(commentquery);
+                                var data = {};
+                                data.retcode = 200;
+                                data.error_msg = "";
+                                //res.json(data);
+                                return res.send(200,data);
+
+                            }
+
                             console.log(commentquery);
                             var data = {};
                             data.retcode = 200;
@@ -156,17 +168,17 @@ exports.commentlike = function(req, res) {
                             //res.json(data);
                             return res.send(200,data);
 
-                        }
 
+                        }); // notificaton insert mysql.query
+
+                    }else{
                         console.log(commentquery);
                         var data = {};
                         data.retcode = 200;
                         data.error_msg = "";
                         //res.json(data);
                         return res.send(200,data);
-
-
-                    }); // notificaton insert mysql.query
+                    }
 
                 }); // update photo table query
 
