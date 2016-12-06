@@ -263,11 +263,11 @@ getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid, fi
             //AND rate <= 10
             var query;
             if(othergender == "male"){ // if male
-                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"'";
+                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
             }else if(othergender == "female"){ // if female
-                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"'";
+                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
             }else{ // if both
-                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"'";
+                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
             }
             global.mysql.query(query, function(err, result){
                 if(err){

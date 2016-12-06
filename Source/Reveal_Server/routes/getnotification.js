@@ -16,7 +16,7 @@ exports.getnotification = function(req, res) {
         " OR notification.destination = users.`facebookid`" +
         " WHERE destination = '"+facebookid+"'" +
         " AND facebookid NOT IN('"+facebookid+"')" +
-        "AND state =0";
+        " ORDER BY Id DESC";
     global.mysql.query(queryprofile, function(err, resultpro){
         var profile;
         if(err){

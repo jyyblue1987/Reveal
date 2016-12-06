@@ -43,7 +43,7 @@ exports.commentlike = function(req, res) {
                 }
                 var likefacebookid = photoresult[0].likefacebookid;
                 if(likefacebookid == null || likefacebookid == ""){
-                    likefacebookid = sendfacebookid + "&" + sendname;
+                    likefacebookid = sendfacebookid + "&" + sendname + "&" + profilephoto;
                 }else {
 
                     // if the sendfacebookid has already like this photo then alarm show.

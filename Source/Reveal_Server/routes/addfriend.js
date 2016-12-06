@@ -23,9 +23,9 @@ exports.addfriend = function(req, res) {
 
     if(request == "requestfriend"){
         // add notification about this message
-        var sendtime = new Date.toString();
-        var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval,sender_name) VALUES ('" +
-            sendfacebookid + "', '"+ facebookid +"', 'requestfriend', '" + sendtime +"', '" + "" + "', '" + sender_name + "')";
+        var sendtime = "";
+        var newfeedquery = "INSERT INTO notification (sender, destination, notekind, sendtime, sender_name) VALUES ('" +
+            sendfacebookid + "', '"+ facebookid +"', 'requestfriend', '" + sendtime +"', '" + sender_name + "')";
         global.mysql.query(newfeedquery, function(err, newresult){
             if(err){
 
