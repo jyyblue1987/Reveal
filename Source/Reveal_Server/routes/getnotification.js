@@ -7,17 +7,25 @@ exports.getnotification = function(req, res) {
     //var url_parts = url.parse(req.url, true);
     var facebookid = req.body.facebookid;
     var queryprofile = "SELECT profilephoto FROM users WHERE facebookid='"+facebookid+"'";
-
-    var notequery = "SELECT * FROM notification WHERE destination='" + facebookid + "' AND state='0'";
-
-    var notequery2 = "SELECT * FROM " +
-        "notification LEFT JOIN users " +
-        " ON notification.sender = users.facebookid" +
-        " OR notification.destination = users.`facebookid`" +
-        " WHERE destination = '"+facebookid+"'" +
-        " AND facebookid NOT IN('"+facebookid+"')" +
-        " ORDER BY Id DESC";
-    global.mysql.query(queryprofile, function(err, resultpro){
+    var notequery8 =
+    "SELECT" +
+    "    *" +
+    "    FROM" +
+    "    notification" +
+    "    LEFT JOIN users" +
+    "    ON notification.sender = users.facebookid" +
+    "    WHERE (" +
+    "        destination = '"+facebookid+"'" +
+    "    AND facebookid NOT IN ('"+facebookid+"')" +
+    "    AND notekind NOT IN ('newfeed')" +
+    "    )" +
+    "        " +
+    "    OR (" +
+    "        destination = '"+facebookid+"'" +
+    "    AND notekind = 'newfeed'" +
+    "    )" +
+    "    ORDER BY Id DESC"
+        global.mysql.query(queryprofile, function(err, resultpro){
         var profile;
         if(err){
             profile = "";
@@ -29,7 +37,7 @@ exports.getnotification = function(req, res) {
             }
         }
 
-        global.mysql.query(notequery2, function (err, result) {
+        global.mysql.query(notequery8, function (err, result) {
             var data = {};
 
             if (err) {

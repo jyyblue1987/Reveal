@@ -26,7 +26,7 @@ CREATE TABLE `block` (
   `blockfacebookid` varchar(255) DEFAULT '',
   `blocksort` varchar(255) DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `block` */
 
@@ -41,7 +41,7 @@ CREATE TABLE `chat` (
   `message` text,
   `time` int(4) DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `chat` */
 
@@ -56,7 +56,7 @@ CREATE TABLE `friend` (
   `name1` varchar(255) DEFAULT '',
   `name2` varchar(255) DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `friend` */
 
@@ -71,7 +71,7 @@ CREATE TABLE `matching` (
   `name1` varchar(255) DEFAULT '',
   `name2` varchar(255) DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 /*Data for the table `matching` */
 
@@ -89,7 +89,7 @@ CREATE TABLE `notification` (
   `state` int(11) DEFAULT '0',
   `sender_name` varchar(255) DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1965 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=latin1;
 
 /*Data for the table `notification` */
 
@@ -116,7 +116,7 @@ CREATE TABLE `photo` (
   `name` varchar(255) DEFAULT '',
   `rate` float DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
 
 /*Data for the table `photo` */
 
@@ -133,7 +133,7 @@ CREATE TABLE `rate` (
   `kind` varchar(20) NOT NULL COMMENT 'rate kind',
   `state` int(2) NOT NULL DEFAULT '0' COMMENT 'teh state of rate',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rate` */
 
@@ -142,7 +142,7 @@ CREATE TABLE `rate` (
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `iid` int(11) NOT NULL AUTO_INCREMENT,
   `facebookid` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
@@ -153,8 +153,8 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `locationx` float NOT NULL DEFAULT '0',
   `locationy` float NOT NULL DEFAULT '0',
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`iid`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 

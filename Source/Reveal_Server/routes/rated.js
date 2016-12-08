@@ -80,25 +80,46 @@ exports.rated = function(req, res){
                                 res.send(200, data1);  // end point
                             }
                             if(result.length > 0){ // if there is someone rate your photo // insert new match notifciation
-                                var newmatch1  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"+
-                                    +sendfacebookid+"', '"+facebookid+"', '"+sender_name+"','newmatch','0')";
-                                var newmatch2  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"+
-                                    +facebookid+"', '"+sendfacebookid+"', '"+name1+"','newmatch','0')";
-                                var newmatch3 = "INSERT INTO matching (facebookid1, facebookid2, name1, name2) VALUES ('"
-                                    +sendfacebookid+"', '"+ facebookid + "', '" + sender_name + "','" + name1 + "')"
-                                global.mysql.query(newmatch3, function(err, result3){
+                                var othername =  result[0].send_name;
+
+                                var ismatch = "SELECT * FROM matching " +
+                                    "WHERE facebookid1='"+sendfacebookid+"' " +
+                                    "AND facebookid2='"+facebookid+"' " +
+                                    "OR facebookid1='"+facebookid+"' " +
+                                    "AND facebookid2='"+sendfacebookid+"'";
+                                global.mysql.query(ismatch, function(err, retismatch){
                                     if(err){
+
+                                    }
+                                    if(retismatch.length > 0){
                                         var data={};
                                         data.retcode = 300;
-                                        data.error_msg = "sql_error";
+                                        data.error_msg ="already ur match"
                                         res.send(200, data);
+                                    }else{
+                                        var newmatch1  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"
+                                            +sendfacebookid+"', '"+facebookid+"', '"+sender_name+"','newmatch','0')";
+                                        var newmatch2  = "INSERT INTO notification (sender, destination, sender_name, notekind, state) VALUES ('"
+                                            +facebookid+"', '"+sendfacebookid+"', '"+othername+"','newmatch','0')";
+                                        var newmatch3 = "INSERT INTO matching (facebookid1, facebookid2, name1, name2) VALUES ('"
+                                            +sendfacebookid+"', '"+ facebookid + "', '" + sender_name + "','" + othername + "')"
+                                        global.mysql.query(newmatch3, function(err, result3){
+                                            if(err){
+                                                var data={};
+                                                data.retcode = 300;
+                                                data.error_msg = "sql_error";
+                                                res.send(200, data);
+                                            }
+                                            var data={};
+                                            data.retcode = 200;
+                                            res.send(200, data);
+                                        });
+                                        global.mysql.query(newmatch1,function(err,result){          });
+                                        global.mysql.query(newmatch2,function(err,rewult2){         });
+
                                     }
-                                    var data={};
-                                    data.retcode = 200;
-                                    res.send(200, data);
                                 });
-                                global.mysql.query(newmatch1,function(err,result){          });
-                                global.mysql.query(newmatch2,function(err,rewult2){         });
+
                             }else{
                                 var data={};
                                 data.retcode = 200;
@@ -130,7 +151,6 @@ exports.rated = function(req, res){
         }else{
             // if the photo does not exist error.
             // this may be not occur but
-            console.log(notiquery);
             var data1 = {};
             data1.retcode = 300;
             data1.error_msg = "Could not find such photo.";

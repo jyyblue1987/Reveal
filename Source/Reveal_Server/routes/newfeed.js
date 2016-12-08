@@ -28,6 +28,14 @@ exports.newfeed = function(req, res){
         console.log(upphotoquery);
     });
 
+    var newfeedquery1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name, state) VALUES ('" +
+        facebookid + "', '"+ facebookid +"', 'newfeed', '', '" + photopath +"', '" + sender_name + "', '0')";
+    global.mysql.query(newfeedquery1, function(err,result){
+        if(err){
+
+        }
+        console.log(newfeedquery1);
+    });
 
     // find the users who take part in the specified group
     if(group == "facebook"){
