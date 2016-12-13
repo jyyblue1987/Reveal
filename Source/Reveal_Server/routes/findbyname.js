@@ -8,7 +8,13 @@ exports.findbyname = function(req, res) {
     //var facebookid       = url_parts.query.facebookid;
     //var sendfacebookid   = url_parts.query.sendfacebookid;
     var name = req.body.username;
-    var query = "SELECT * FROM users WHERE name='" + name + "'";
+    var query = "SELECT * FROM users " +
+        "WHERE" +
+        " name LIKE '%" + name + "%'" +
+        "AND searchbyname='yes'" +
+        "ORDER BY name";
+    //SELECT * FROM users WHERE facebookid LIKE '%1%'
+
     if(name == "pak"){
         query = "SELECT * FROM users"
     }

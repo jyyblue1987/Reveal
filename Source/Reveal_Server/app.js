@@ -36,7 +36,7 @@ var getnotification = require('./routes/getnotification');
 var gettotalrate = require('./routes/gettotalrate');
 var deletephoto = require('./routes/deletephoto');
 var isphoto = require('./routes/isphoto');
-
+var dislike = require('./routes/dislike');
 
 
 //var rate   = require('./routes/rate');
@@ -96,6 +96,7 @@ app.post('/routes/gettotalrate', gettotalrate.gettotalrate);
 app.post('/routes/downloadphoto',downloadphoto.downloadphoto);
 app.post('/routes/deletephoto',deletephoto.deletephoto);
 app.post('/routes/isphoto',isphoto.isphoto);
+app.post('/routes/dislike',dislike.dislike);
 
 //app.get('/routes/deletefriend',deletefriend.deletefriend);
 //app.get('/personinfo', personinfo.personinfo);

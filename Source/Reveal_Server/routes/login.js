@@ -22,22 +22,14 @@ exports.login = function(req, res){
     var minrate = req.body.minrate;
     var maxrate = req.body.maxrate;
     var distance= req.body.distance;
+    var showfullname = req.body.showfullname;
+    var searchbyname = req.body.searchbyname;
     var first;
     console.log(facebookid);
     console.log(name);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// get
-//    var url_parts = url.parse(req.url,true);
-//    var email = url_parts.query.email;
-//    var facebookid=url_parts.query.facebookid;
-//    var age = url_parts.query.age;
-//    var name = url_parts.query.firstname;
-//    var gender = url_parts.query.gender;
-//    var locationx = url_parts.query.locationx;
-//    var locationy = url_parts.query.locationy;
-//    var othergender = url_parts.query.othergender;
     var sql = "SELECT facebookid FROM users WHERE facebookid='" + facebookid +"'";//email='"+ email+"' AND age='"+ age +"' AND firstname='"+name+"'";
     console.log(sql);
     global.mysql.query(sql, function(err,rows){
@@ -48,22 +40,45 @@ exports.login = function(req, res){
 
         var first = 0;
         if(rows.length == 0){
-            insert(facebookid, gender, locationx, locationy, email, age, name);
+            insert(facebookid, gender, locationx, locationy, email, age, name, showfullname, searchbyname);
             first = 1;
             sendphoto(facebookid,res, first, minage, maxage, minrate, maxrate,othergender);
         }
         if(rows.length > 0){
+            updatemyprofile(facebookid, gender, locationx, locationy, email, age, name,showfullname, searchbyname);
             sendphoto(facebookid,res, first, minage, maxage, minrate, maxrate,othergender);
         }
     });
 }
-insert = function(facebookid, gender, locationx, locationy, email, age, name){
+updatemyprofile = function(facebookid, gender, locationx, locationy, email, age, name, showfullname, searchbyname){
+    var updatequery= "UPDATE" +
+        "    users" +
+        "    SET" +
+        "    showfullname = '"+showfullname+"'," +
+        "    searchbyname = '"+searchbyname+"'," +
+        "        locationx = '"+locationx+"'," +
+        "        locationy = '"+locationy+"'" +
+        "    WHERE facebookid = '"+facebookid+"' ";
+    global.mysql.query(updatequery, function(err, ruslt){
+        if(err){
+            console.log(err);
+        }
+       console.log("updated");
+    });
+};
+insert = function(facebookid, gender, locationx, locationy, email, age, name, showfullname, searchbyname){
     var totalrate =0;
     //var locationx  = 0;
     //var locationy = 0;
     var profilephoto = "";
-    var query = "INSERT INTO users (facebookid, gender, locationx, locationy, totalrate, name, age, email,profilephoto,lastname) VALUES ('"+facebookid+"', '"+ gender
-        +"', '"+locationx+"', '"+locationy +"', '"+ totalrate+"', '"+name+"', '"+age+ "', '"+email+"', '"+ profilephoto +"', '')" ;
+    var query = "INSERT INTO users (" +
+        "facebookid, gender, locationx, locationy, " +
+        "totalrate, name, age, email," +
+        "profilephoto,lastname,showfullname, searchbyname)" +
+        " VALUES ('"
+        +facebookid+"', '"             + gender+"', '"     +locationx+"', '"         +locationy +"', '"
+        + totalrate+"', '"             +name+"', '"        +age+ "', '"              +email+"', '"
+        + profilephoto +               "', '', '"          +showfullname+"', '"      +searchbyname+"')" ;
     global.mysql.query(query,function(err,rows){
         if(err){
             console.error(err);
@@ -265,11 +280,11 @@ getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid, fi
             //AND rate <= 10
             var query;
             if(othergender == "male"){ // if male
-                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
+                query = "SELECT facebookid, photopath, name FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
             }else if(othergender == "female"){ // if female
-                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
+                query = "SELECT facebookid, photopath , name FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
             }else{ // if both
-                query = "SELECT facebookid, photopath FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
+                query = "SELECT facebookid, photopath, name FROM photo WHERE facebookid IN ("+ searchIn +") AND rate >='" + minrate + "' AND rate <='" + maxrate +"' ORDER BY Id DESC";
             }
             global.mysql.query(query, function(err, result){
                 if(err){
@@ -291,9 +306,6 @@ getNonFriendMatch = function(match1, match2, friend1, friend2,res,facebookid, fi
                     //res.json(data);
                     return res.send(200,data);
                 }
-
-                //return res.status(200).json(result);
-                //res.send(200, "success") // last sending part........................
             });
         }else{
             var data = {};

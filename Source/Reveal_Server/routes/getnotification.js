@@ -21,7 +21,7 @@ exports.getnotification = function(req, res) {
     "    )" +
     "        " +
     "    OR (" +
-    "        destination = '"+facebookid+"'" +
+    "    destination = '"+facebookid+"'" +
     "    AND notekind = 'newfeed'" +
     "    )" +
     "    ORDER BY Id DESC"

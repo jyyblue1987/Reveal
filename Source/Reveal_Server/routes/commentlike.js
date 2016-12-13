@@ -43,7 +43,7 @@ exports.commentlike = function(req, res) {
                 }
                 var likefacebookid = photoresult[0].likefacebookid;
                 if(likefacebookid == null || likefacebookid == ""){
-                    likefacebookid = sendfacebookid + "&" + sendname + "&" + profilephoto;
+                    likefacebookid = sendfacebookid + "&" + sendname + "&" + profilephoto + "^";
                 }else {
 
                     // if the sendfacebookid has already like this photo then alarm show.
@@ -57,7 +57,7 @@ exports.commentlike = function(req, res) {
 
 
                     }else{ // if sendfacebookid does not like this photo before then append this like message.
-                        likefacebookid = likefacebookid + "^" + sendfacebookid +"&" + sendname + "&" + profilephoto;
+                        likefacebookid = likefacebookid + sendfacebookid +"&" + sendname + "&" + profilephoto + "^";
                     }
                 }
                 // update the photo column.(table)

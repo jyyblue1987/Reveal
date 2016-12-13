@@ -22,11 +22,11 @@ DROP TABLE IF EXISTS `block`;
 
 CREATE TABLE `block` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `sender` varchar(255) DEFAULT '',
-  `blockfacebookid` varchar(255) DEFAULT '',
-  `blocksort` varchar(255) DEFAULT '',
+  `sender` varchar(255) NOT NULL,
+  `blockfacebookid` varchar(255) NOT NULL,
+  `blocksort` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `block` */
 
@@ -36,12 +36,12 @@ DROP TABLE IF EXISTS `chat`;
 
 CREATE TABLE `chat` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `receiver` varchar(255) DEFAULT NULL,
-  `message` text,
-  `time` int(4) DEFAULT '0',
+  `name` varchar(255) NOT NULL,
+  `receiver` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `time` int(4) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 /*Data for the table `chat` */
 
@@ -51,12 +51,12 @@ DROP TABLE IF EXISTS `friend`;
 
 CREATE TABLE `friend` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `facebookid1` varchar(255) DEFAULT NULL,
-  `facebookid2` varchar(255) DEFAULT NULL,
-  `name1` varchar(255) DEFAULT '',
-  `name2` varchar(255) DEFAULT '',
+  `facebookid1` varchar(255) NOT NULL,
+  `facebookid2` varchar(255) NOT NULL,
+  `name1` varchar(255) NOT NULL,
+  `name2` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `friend` */
 
@@ -66,12 +66,12 @@ DROP TABLE IF EXISTS `matching`;
 
 CREATE TABLE `matching` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `facebookid1` varchar(255) DEFAULT NULL,
-  `facebookid2` varchar(255) DEFAULT NULL,
-  `name1` varchar(255) DEFAULT '',
-  `name2` varchar(255) DEFAULT '',
+  `facebookid1` varchar(255) NOT NULL,
+  `facebookid2` varchar(255) NOT NULL,
+  `name1` varchar(255) NOT NULL,
+  `name2` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 /*Data for the table `matching` */
 
@@ -81,15 +81,15 @@ DROP TABLE IF EXISTS `notification`;
 
 CREATE TABLE `notification` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `sender` varchar(255) DEFAULT NULL,
-  `destination` varchar(255) DEFAULT NULL,
-  `notekind` varchar(255) DEFAULT NULL,
-  `sendtime` varchar(255) DEFAULT NULL,
-  `feedval` text,
-  `state` int(11) DEFAULT '0',
-  `sender_name` varchar(255) DEFAULT '',
+  `sender` varchar(255) NOT NULL,
+  `destination` varchar(255) NOT NULL,
+  `notekind` varchar(255) NOT NULL,
+  `sendtime` varchar(255) NOT NULL,
+  `feedval` text NOT NULL,
+  `state` int(11) NOT NULL DEFAULT '0',
+  `sender_name` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=latin1;
 
 /*Data for the table `notification` */
 
@@ -99,24 +99,24 @@ DROP TABLE IF EXISTS `photo`;
 
 CREATE TABLE `photo` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `facebookid` varchar(255) DEFAULT NULL,
-  `photopath` varchar(255) DEFAULT NULL,
-  `ratesum` int(11) DEFAULT '0',
-  `ratenumber` int(11) DEFAULT '0',
-  `reportgp` int(11) DEFAULT '0',
-  `reportom` int(11) DEFAULT '0',
-  `reportnap` int(11) DEFAULT '0',
-  `reportwg` int(11) DEFAULT '0',
-  `reportfls` int(11) DEFAULT '0',
-  `commentnum` int(11) DEFAULT '0',
-  `commentcon` text,
-  `likenum` int(11) DEFAULT '0',
-  `likefacebookid` text COMMENT 'the users that like this photo. seperate with "^".',
-  `mycomment` text,
-  `name` varchar(255) DEFAULT '',
-  `rate` float DEFAULT '0',
+  `facebookid` varchar(255) NOT NULL,
+  `photopath` varchar(255) NOT NULL,
+  `ratesum` int(11) NOT NULL DEFAULT '0',
+  `ratenumber` int(11) NOT NULL DEFAULT '0',
+  `reportgp` int(11) NOT NULL DEFAULT '0',
+  `reportom` int(11) NOT NULL DEFAULT '0',
+  `reportnap` int(11) NOT NULL DEFAULT '0',
+  `reportwg` int(11) NOT NULL DEFAULT '0',
+  `reportfls` int(11) NOT NULL DEFAULT '0',
+  `commentnum` int(11) NOT NULL DEFAULT '0',
+  `commentcon` text NOT NULL,
+  `likenum` int(11) NOT NULL DEFAULT '0',
+  `likefacebookid` text NOT NULL COMMENT 'the users that like this photo. seperate with "^".',
+  `mycomment` text NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `rate` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
 
 /*Data for the table `photo` */
 
@@ -133,7 +133,7 @@ CREATE TABLE `rate` (
   `kind` varchar(20) NOT NULL COMMENT 'rate kind',
   `state` int(2) NOT NULL DEFAULT '0' COMMENT 'teh state of rate',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rate` */
 
@@ -151,10 +151,12 @@ CREATE TABLE `users` (
   `totalrate` int(11) NOT NULL DEFAULT '0',
   `profilephoto` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `locationx` float NOT NULL DEFAULT '0',
-  `locationy` float NOT NULL DEFAULT '0',
+  `locationx` double NOT NULL DEFAULT '0',
+  `locationy` double NOT NULL DEFAULT '0',
+  `showfullname` varchar(11) NOT NULL DEFAULT 'yes' COMMENT 'yes: full name, no: first name',
+  `searchbyname` varchar(11) NOT NULL DEFAULT 'yes' COMMENT 'yes: search by name, no: refuse searching by name.',
   PRIMARY KEY (`iid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
