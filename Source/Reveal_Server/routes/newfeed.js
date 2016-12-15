@@ -27,9 +27,9 @@ exports.newfeed = function(req, res){
         }
         console.log(upphotoquery);
     });
-
+    var time = new Date().toString();
     var newfeedquery1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name, state) VALUES ('" +
-        facebookid + "', '"+ facebookid +"', 'newfeed', '', '" + photopath +"', '" + sender_name + "', '0')";
+        facebookid + "', '"+ facebookid +"', 'newfeed', '"+time+"', '" + photopath +"', '" + sender_name + "', '0')";
     global.mysql.query(newfeedquery1, function(err,result){
         if(err){
 
@@ -39,8 +39,8 @@ exports.newfeed = function(req, res){
 
     // find the users who take part in the specified group
     if(group == "facebook"){
-        var query_friend_1 = "SELECT facebookid2 FROM friend WHERE facebookid1='"+facebookid+"'";
-        var query_friend_2 = "SELECT facebookid1 FROM friend WHERE facebookid2='"+facebookid+"'";
+        var query_friend_1 = "SELECT facebookid2 FROM friend WHERE facebookid1='"+facebookid+"' AND sendfeed1='yes'";
+        var query_friend_2 = "SELECT facebookid1 FROM friend WHERE facebookid2='"+facebookid+"' AND sendfeed2='yes'";
         var friend1="";
         var friend2="";
         var queryComplete = 0;

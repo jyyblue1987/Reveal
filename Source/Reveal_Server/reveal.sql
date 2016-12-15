@@ -41,7 +41,7 @@ CREATE TABLE `chat` (
   `message` text NOT NULL,
   `time` int(4) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `chat` */
 
@@ -55,8 +55,10 @@ CREATE TABLE `friend` (
   `facebookid2` varchar(255) NOT NULL,
   `name1` varchar(255) NOT NULL,
   `name2` varchar(255) NOT NULL,
+  `sendfeed1` varchar(23) NOT NULL DEFAULT 'no',
+  `sendfeed2` varchar(23) NOT NULL DEFAULT 'no',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `friend` */
 
@@ -71,7 +73,7 @@ CREATE TABLE `matching` (
   `name1` varchar(255) NOT NULL,
   `name2` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `matching` */
 
@@ -89,7 +91,7 @@ CREATE TABLE `notification` (
   `state` int(11) NOT NULL DEFAULT '0',
   `sender_name` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 /*Data for the table `notification` */
 
@@ -116,9 +118,11 @@ CREATE TABLE `photo` (
   `name` varchar(255) NOT NULL,
   `rate` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 /*Data for the table `photo` */
+
+insert  into `photo`(`Id`,`facebookid`,`photopath`,`ratesum`,`ratenumber`,`reportgp`,`reportom`,`reportnap`,`reportwg`,`reportfls`,`commentnum`,`commentcon`,`likenum`,`likefacebookid`,`mycomment`,`name`,`rate`) values (38,'337825819928904','263c295d71171759b1c0cb088115ef81.jpg',0,0,0,0,0,0,0,0,'',0,'','','Sin Mi Rae',0),(39,'337825819928904','aecc46c96aef2e002c8d5633d53c3002.jpg',0,0,0,0,0,0,0,0,'',0,'','','Sin Mi Rae',0),(40,'337825819928904','270bfc28a2bda32626773f05dbf8b513.jpg',0,0,0,0,0,0,0,0,'',0,'','','Sin Mi Rae',0);
 
 /*Table structure for table `rate` */
 
@@ -133,7 +137,7 @@ CREATE TABLE `rate` (
   `kind` varchar(20) NOT NULL COMMENT 'rate kind',
   `state` int(2) NOT NULL DEFAULT '0' COMMENT 'teh state of rate',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rate` */
 
@@ -153,10 +157,10 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `locationx` double NOT NULL DEFAULT '0',
   `locationy` double NOT NULL DEFAULT '0',
-  `showfullname` varchar(11) NOT NULL DEFAULT 'yes' COMMENT 'yes: full name, no: first name',
-  `searchbyname` varchar(11) NOT NULL DEFAULT 'yes' COMMENT 'yes: search by name, no: refuse searching by name.',
+  `showfullname` varchar(255) NOT NULL DEFAULT 'yes' COMMENT 'yes: full name, no: first name',
+  `searchbyname` varchar(255) NOT NULL DEFAULT 'yes' COMMENT 'yes: search by name, no: refuse searching by name.',
   PRIMARY KEY (`iid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 

@@ -74,7 +74,7 @@ exports.addfriend = function(req, res) {
                     // insert added friend notification
                     var sendtime = new Date().toString();
                     var added1 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" + facebookid + "', '"+sendfacebookid +
-                        "', 'acceptfriend', '"  +sendtime+ "', '" + "" + "', '" + sender_name + "')";
+                        "', 'acceptfriend', '"  +sendtime+ "', '" + "" + "', '" + name1 + "')";
                     var added2 = "INSERT INTO notification (sender, destination, notekind, sendtime, feedval, sender_name) VALUES ('" + sendfacebookid + "', '"+facebookid   +
                         "', 'acceptfriend', '"  +sendtime+ "', '" + "" + "', '" + sender_name + "')";
                     global.mysql.query(added1, function(er,result){

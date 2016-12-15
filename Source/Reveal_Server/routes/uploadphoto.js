@@ -16,6 +16,7 @@ exports.uploadphoto = function(req, res){
 
     var queryprofile = "UPDATE users SET profilephoto='"+photopath+"' WHERE facebookid='"+facebookid+"'";
     global.mysql.query(queryprofile, function(err, resultprofile){});
+
     var query = "INSERT INTO photo (facebookid, photopath, ratesum, ratenumber, reportgp,"+
         "reportom, reportnap, reportwg, reportfls, commentnum,"+
         " commentcon, likenum, likefacebookid,"+
