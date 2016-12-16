@@ -12,11 +12,14 @@ exports.gettotalrate = function(req, res) {
         if(err){
 
         }
+
             var ret = result[0];
             var ratenum = ret.num;
             var ratesum = ret.sum;
             var rate = parseFloat(ratesum/ratenum);
             var data = {};
+            var query2 = "UPDATE users SET totalrate='"+rate+"' WHERE facebookid='"+facebookid+"'";
+        global.mysql.query(query2, function(err, result2){    });
 
         if(ratenum != null && ratenum != 0){
             data.retcode = 200;

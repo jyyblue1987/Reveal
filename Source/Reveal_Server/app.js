@@ -39,6 +39,8 @@ var isphoto = require('./routes/isphoto');
 var dislike = require('./routes/dislike');
 var fullnamefriend = require('./routes/fullnamefriend');
 var post_notification = require('./routes/post_notification');
+var update_setting = require('./routes/update_setting');
+var update_suberb = require('./routes/update_suberb');
 
 
 
@@ -103,6 +105,8 @@ app.post('/routes/isphoto',isphoto.isphoto);
 app.post('/routes/dislike',dislike.dislike);
 app.post('/routes/fullnamefriend',fullnamefriend.fullnamefriend);
 app.post('/routes/post_notification',post_notification.post_notification);
+app.post('/routes/update_setting',update_setting.update_setting);
+app.post('/routes/update_suberb',update_suberb.update_suberb);
 
 
 
